@@ -1,1 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  // font-family: "Lobster", cursive;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn {
+  padding: 10px 50px;
+  min-width: 50px;
+  font-size: 2rem;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.322);
+  margin-bottom: 3%;
+
+  // 第一套樣式 大眾型 + hover黯淡
+  &.primary {
+    background: #395293d9;
+    color: #b9ccda;
+    border: 2px solid #b9ccda;
+    &:hover {
+      background-color: #192545d9;
+      transition: 0.5s;
+    }
+  }
+
+  // 第二套樣式 大眾型 + hover發亮
+  &.secondary {
+    background: #395293d9;
+    color: #b9ccda;
+    border: 2px solid #b9ccda;
+    box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.322);
+    &:hover {
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.678);
+    }
+  }
+}
+
+.closeX {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  font-size: 3rem;
+  text-align: center;
+  line-height: 40px;
+  background-color: #31a9ffce;
+  border: 2px solid #b9ccda;
+  color: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
+}

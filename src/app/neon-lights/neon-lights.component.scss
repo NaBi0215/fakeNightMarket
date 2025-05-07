@@ -1,0 +1,41 @@
+.neonLightsContainer {
+  position: absolute;
+  z-index: 1;
+  top: 65px;
+  left: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .shopSign {
+    position: relative;
+  }
+  .shopSignTxt {
+    position: absolute;
+    bottom: 70px;
+    left: 120px;
+    text-align: center;
+    h4 {
+      color: #fff600;
+      text-shadow: 0px 5px #00000040;
+      font-size: 2.4rem;
+      margin: 0;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      &:nth-child(3) {
+        margin-top: 25px;
+      }
+    }
+    p {
+      color: #00f2e4;
+      font-size: 2.2rem;
+      margin-bottom: 0;
+      letter-spacing: 3px;
+      margin: 0;
+    }
+  }
+  .neonLights {
+    position: absolute;
+    bottom: -115px;
+  }
+}

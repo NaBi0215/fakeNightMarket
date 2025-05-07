@@ -1,0 +1,542 @@
+:host {
+  display: block;
+  // background-image: url("../../../../public/imgs/bannerPet.png");
+  background-image: url("/imgs/5552446.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.petContainer {
+  // outline: 1px solid gold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7%;
+  position: relative;
+  .petChangeBtnContainer {
+    position: absolute;
+    left: 100px;
+    bottom: -80px;
+    z-index: 1;
+    .petChangeOutsideCircle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #395293;
+      position: relative;
+      z-index: 3;
+      .petChange {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+        background-color: #b9ccdab2;
+        cursor: pointer;
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+    .petChangeBox {
+      width: 130px;
+      height: 130px;
+      background-color: #222222cc;
+      border-radius: 20px;
+      position: absolute;
+      left: 60px;
+      bottom: 80px;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-direction: column;
+      flex-direction: column-reverse;
+      button {
+        margin: 0;
+        padding: 0;
+        border: 1px solid transparent;
+        outline: none;
+        display: block;
+        background: transparent;
+        color: #ffffff;
+        font-size: 1.5rem;
+        text-align: center;
+        letter-spacing: 3px;
+        line-height: 50px;
+        cursor: pointer;
+      }
+      .petLine {
+        border-bottom: 1px solid #ffffff;
+      }
+    }
+  }
+
+  // 餵食 陪玩
+  .entertainmentBtnContainer {
+    position: absolute;
+    left: 100px;
+    top: -60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    margin-right: 1%;
+    .feedingFoodContainer {
+      position: relative;
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      background-color: #395293;
+      &:hover {
+        background-color: #974600;
+        transition: background-color 0.3s ease;
+        // 子層同步變化
+        .feedingFood {
+          background: #d4865cb2;
+          transition: background-color 0.3s ease;
+        }
+      }
+      .feedingFood {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #b9ccdab2;
+        cursor: pointer;
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .foodsContainerOutside {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .foodsContainer {
+          position: absolute;
+          top: 0;
+          left: 150px;
+          height: 65px;
+          background-color: #974600;
+          border: 3px solid#D4865CB2;
+          border-radius: 8px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          opacity: 0;
+          width: 0;
+          overflow: hidden;
+          transition: width 0.5s ease, opacity 0.5s ease;
+          .foodxBox {
+            width: 75px;
+            height: 75px;
+            background-color: #ffffff99;
+            border: 3px solid #2a365e80;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+          }
+        }
+        &.show {
+          .arrow {
+            opacity: 1;
+            transform: translateX(0); // 從左滑到原位
+          }
+          .foodsContainer {
+            width: 450px;
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .playingGamesContainer {
+      position: relative;
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      background-color: #395293;
+      &:hover {
+        background-color: #a4962e;
+        transition: background-color 0.3s ease;
+        .playingGames {
+          background: #e8db78cc;
+          transition: background-color 0.3s ease;
+        }
+      }
+      .playingGames {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #b9ccdab2;
+        cursor: pointer;
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      .playingGamesContainerOutside {
+        position: relative;
+        display: flex;
+        align-items: center;
+        .gamesContainer {
+          position: absolute;
+          top: 0;
+          left: 150px;
+          height: 65px;
+          background-color: #a4962e;
+          border: 3px solid#E8DB78CC;
+          border-radius: 8px;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          opacity: 0;
+          width: 0;
+          overflow: hidden;
+          transition: width 0.5s ease, opacity 0.5s ease;
+          .gamesBox {
+            width: 75px;
+            height: 75px;
+            background-color: #ffffff99;
+            border: 3px solid #2a365e80;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+          }
+        }
+        &.show {
+          .arrow {
+            opacity: 1;
+            transform: translateX(0); // 從左滑到原位
+          }
+          .gamesContainer {
+            width: 450px;
+            opacity: 1;
+          }
+        }
+      }
+    }
+    // < 字樣
+    .arrow {
+      position: absolute;
+      top: 20px;
+      left: 110px;
+      font-size: 3rem;
+      color: #ffffffab;
+      cursor: pointer;
+      transition: opacity 0.5s transform 0.5s ease;
+      opacity: 0;
+      transform: translateX(-20px); // 初始位移
+    }
+  }
+
+  .petPicContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .petName {
+      display: flex;
+      align-items: center;
+      gap: 5%;
+      margin-right: 100px;
+      position: relative;
+      input {
+        width: 200px;
+        height: 60px;
+        line-height: 60px;
+        border: 2px dashed #d9d9d9;
+        background-color: #fff9f94d;
+        padding: 0 15%;
+        border-radius: 16px;
+        color: #ffffff;
+        font-size: 2.5rem;
+        text-align: center;
+      }
+      input::placeholder {
+        color: #ffffff;
+        font-size: 2.5rem;
+        text-align: center;
+      }
+      .petNameRevise {
+        position: absolute;
+        right: -70px;
+      }
+    }
+  }
+  .petTxtContainer {
+    display: flex;
+    align-items: center;
+    gap: 10%;
+    color: #4d3e3e;
+    .level {
+      width: 350px;
+    }
+    .levelTitle {
+      display: flex;
+      align-items: center;
+      h3 {
+        font-size: 2.5rem;
+        margin-right: 6%;
+      }
+    }
+    .levelBar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 350px;
+
+      .progressNumber {
+        font-size: 1.6rem;
+        margin-left: 20px;
+        letter-spacing: 2px;
+      }
+    }
+    .levelSkill {
+      margin: 5% 0px;
+      font-weight: bold;
+      h5 {
+        font-size: 1.5rem;
+        margin: 0;
+      }
+      p {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        line-height: 30px;
+      }
+    }
+    .hungryBarContainer {
+      position: relative;
+      .hungryBar {
+        display: flex;
+        align-items: center;
+        width: 350px;
+        img {
+          margin-right: 10px;
+        }
+      }
+    }
+    .moodBarContainer {
+      position: relative;
+      margin: 8% 0px;
+      .moodBar {
+        display: flex;
+        align-items: center;
+        width: 350px;
+        img {
+          margin-right: 10px;
+        }
+      }
+    }
+    .stateBarContainer {
+      position: relative;
+      .stateBar {
+        display: flex;
+        align-items: center;
+        width: 350px;
+        img {
+          margin-right: 10px;
+        }
+      }
+    }
+    .strength {
+      //   outline: 1px solid darkblue;
+      width: 480px;
+      .strengthBarContainer {
+        position: relative;
+        margin: 8% 0px;
+        .strengthBar {
+          display: flex;
+          align-items: center;
+
+          h3 {
+            font-size: 2.5rem;
+            flex: 0 0 auto;
+          }
+          .progressStrengthBar {
+            width: 100%;
+            height: 30px;
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            overflow: hidden;
+            position: relative;
+            .progressStrengthFill {
+              background-color: #d8b252;
+              height: 100%;
+              width: 0%;
+              transition: width 0.3s ease;
+            }
+          }
+        }
+        .progressStrengthBarNumber {
+          font-size: 1.4rem;
+          position: absolute;
+          right: 0;
+          top: 100px;
+        }
+      }
+      .attackBarContainer {
+        position: relative;
+        margin: 70px 0px;
+        .attackBar {
+          display: flex;
+          align-items: center;
+
+          .progressAttackBar {
+            width: 100%;
+            height: 20px;
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            overflow: hidden;
+            position: relative;
+          }
+        }
+      }
+      .defenseBarContainer {
+        position: relative;
+        margin: 70px 0px;
+        .defenseBar {
+          display: flex;
+          align-items: center;
+
+          .progressDefenseBar {
+            width: 100%;
+            height: 20px;
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            overflow: hidden;
+            position: relative;
+          }
+        }
+      }
+      .agileBarContainer {
+        position: relative;
+        margin: 70px 0px;
+        .agileBar {
+          display: flex;
+          align-items: center;
+
+          .progressAgileBar {
+            width: 100%;
+            height: 20px;
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            overflow: hidden;
+            position: relative;
+          }
+        }
+      }
+      .treasureBarContainer {
+        position: relative;
+        margin: 70px 0px;
+        .treasureBar {
+          display: flex;
+          align-items: center;
+
+          .progressTreasureBar {
+            width: 100%;
+            height: 20px;
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            overflow: hidden;
+            position: relative;
+          }
+        }
+      }
+    }
+  }
+  /* 能力條外框 */
+  .progressBar {
+    width: 100%;
+    height: 20px;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    overflow: hidden;
+    position: relative;
+  }
+  .progressMoreBigBar {
+    width: 100%;
+    height: 25px;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    overflow: hidden;
+    position: relative;
+  }
+  // bar條標題
+  .barTitle {
+    margin: 0;
+    margin-right: 10px;
+    flex: 0 0 auto;
+    font-size: 1.5rem;
+  }
+  // bar條內部填充
+  .progressFill {
+    height: 100%;
+    background-color: #75f94c;
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+  // span 程度數值顯示
+  .progressBarNumber {
+    font-size: 1.4rem;
+    position: absolute;
+    right: 0;
+    top: 40px;
+  }
+}
+
+.equipmentBtnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  margin-right: 5%;
+  margin-bottom: 1%;
+  gap: 2.5%;
+  .equipmentContainer {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background-color: #fff;
+    .equipment {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background-color: #8d8d8d;
+      transition: background-color 0.3s ease; /* 添加過渡效果 */
+      cursor: pointer;
+      &:hover {
+        background: #395293;
+      }
+      img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}

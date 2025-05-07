@@ -1,0 +1,61 @@
+<div class="overlay">
+  <div class="outsideBtnContainer">
+    @for(containerBtn of keys(modalContainerData); track containerBtn){
+    <button
+      (click)="changeContainerTxt(containerBtn)"
+      [ngClass]="{ active: selectedContainerBtn === containerBtn }"
+    >
+      {{ containerBtn }}
+    </button>
+    }
+  </div>
+  <div class="modalContainer">
+    <span class="closeX" (click)="closeModal()">&times;</span>
+    <div class="modalContent">
+      <div class="modalContentTxt">
+        <h2>{{ modalContentData[selectedContentBtn].title }}</h2>
+        <img
+          [src]="
+            'https://multi-cdn.cg11pro.com/resource/prism/front/gameLobby/ui/market_night/line.png'
+          "
+          alt="decorate line"
+        />
+        <ul>
+          <li>
+            活動期間
+            <p>{{ modalContentData[selectedContentBtn].date }}</p>
+          </li>
+          <li>
+            活動內容
+            <p class="advertiseTxt">
+              {{ modalContentData[selectedContentBtn].txt }}
+            </p>
+          </li>
+        </ul>
+        <div class="imgContainer"></div>
+      </div>
+      <div class="btnContainer">
+        @for(contentBtn of contentKeys; track contentBtn){
+        <div class="btnContent">
+          <button
+            (click)="changeContentTxt(contentBtn)"
+            [ngClass]="{ active: selectedContentBtn === contentBtn }"
+          >
+            {{ contentBtn }}
+          </button>
+          <div class="decorateCircle"></div>
+        </div>
+        }
+      </div>
+
+      <div class="decorateImgContainer">
+        <img
+          [src]="
+            'https://multi-cdn.cg11pro.com/resource/prism/front/gameLobby/ui/market_night/decorateLine.png'
+          "
+          alt="decorate line"
+        />
+      </div>
+    </div>
+  </div>
+</div>

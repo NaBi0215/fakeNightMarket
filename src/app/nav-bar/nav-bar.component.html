@@ -1,0 +1,865 @@
+<div class="navBar">
+  <div class="all">
+    <div class="allPic" (click)="toggleOffcanvas()">
+      <img src="imgs/choiceAll.png" alt="" />
+    </div>
+  </div>
+  <div class="others">
+    <div class="othersPic">
+      <a>
+        <img src="imgs/bag.png" (click)="showBagModal()" alt="bag icon" />
+        @if(isRedDotVisible('bag')){<span class="redDot"></span>}
+      </a>
+      <a>
+        <img
+          src="imgs/sendMail.png"
+          (click)="onImgClickModal('isMail')"
+          alt="mail icon"
+        />
+        @if(isRedDotVisible('mail')){<span class="redDot"></span>}
+      </a>
+      <a>
+        <img
+          src="imgs/cookingPot.png"
+          (click)="showSynthesisModal()"
+          alt="cooking pot icon"
+        />
+        @if(isRedDotVisible('cookingPot')){<span class="redDot"></span>}
+      </a>
+      <a (click)="onImgClick('pet')"
+        ><img
+          [class.selected]="isSelected('pet')"
+          src="imgs/catCaregivers.png"
+          alt="cat caregivers icon"
+        />@if(isRedDotVisible('pet')){<span class="redDot"></span>}</a
+      >
+      <a>
+        <img
+          src="imgs/miningGems.png"
+          (click)="onImgClickModal('isMining')"
+          alt="mining gems icon"
+        />
+        @if(isRedDotVisible('miningGems')){<span class="redDot"></span>}
+      </a>
+
+      <a (click)="onImgClick('bossDuel')">
+        <img
+          [class.selected]="isSelected('bossDuel')"
+          src="imgs/dragon.png"
+          alt="dragon icon"
+        />@if(isRedDotVisible('bossDuel')){<span class="redDot"></span>}</a
+      >
+      <a (click)="onImgClick('event')">
+        <img
+          [class.selected]="isSelected('event')"
+          src="imgs/gift.png"
+          alt="gift icon"
+        />@if(isRedDotVisible('event')){<span class="redDot"></span>}</a
+      >
+
+      <a (click)="onImgClick('playerRankings')">
+        <img
+          [class.selected]="isSelected('playerRankings')"
+          src="imgs/leaderBoard.png"
+          alt="leaderBoard icon"
+        />@if(isRedDotVisible('playerRankings')){<span class="redDot"></span
+        >}</a
+      >
+      <a>
+        <img
+          src="imgs/qa.png"
+          alt="qa icon"
+          (click)="authService.showModal('isQA')"
+        />
+        @if(isRedDotVisible('qa')){<span class="redDot"></span>}
+      </a>
+    </div>
+  </div>
+  <div class="set">
+    <div class="setPic">
+      <!-- <img src="imgs/logout.png" alt="logout" (click)="showLogOut()" /> -->
+      <img
+        src="imgs/logout.png"
+        alt="logout"
+        [style.visibility]="authService.isLoggedIn ? 'visible' : 'hidden'"
+        (click)="authService.showModal('isLogOut')"
+      />
+
+      <img
+        src="imgs/services.png"
+        alt="language"
+        (click)="authService.showModal('isLanguage')"
+      />
+    </div>
+  </div>
+  <div class="offcanvas" [class.show]="isVisible">
+    <div class="offcanvasHeader">
+      <div class="mySelfPic"></div>
+      <div class="mySelfTxt">
+        <p>level 60 屁屁蛋</p>
+        <img src="imgs/titleCharm.png" alt="title charm" />
+      </div>
+    </div>
+    <div class="lineFriendContainer">
+      <span>好友</span>
+      <div class="lineFriend"></div>
+    </div>
+    <swiper-container
+      slides-per-view="3"
+      direction="vertical"
+      class="offcanvasBody"
+    >
+      <!-- 好友1 -->
+      <swiper-slide
+        ><div class="friendContainer">
+          <div class="friendPic"></div>
+          <div class="friendTxtContainer">
+            <div class="friendName">
+              <p>level 20 屁屁狗</p>
+            </div>
+            <div class="friendTitle">
+              <div class="volumePic">
+                <img
+                  class="volume"
+                  [src]="isVolume ? 'imgs/volume.png' : 'imgs/volumeOff.png'"
+                  (click)="volumeToggle()"
+                  alt="volume icon"
+                />
+              </div>
+              <img src="imgs/titleCharm.png" alt="title icon" />
+            </div>
+          </div>
+          <div class="friendIcon">
+            <img src="imgs/contact.png" alt="contact icon" />
+            <img
+              class="battle"
+              src="imgs/battle.png"
+              (click)="authService.showModal('isBattle')"
+              alt="battle icon"
+            />
+          </div></div
+      ></swiper-slide>
+      <!-- 好友2 -->
+      <swiper-slide
+        ><div class="friendContainer">
+          <div class="friendPic">
+            <img
+              class="redFrame"
+              src="imgs/pictureFrame.png"
+              alt="picture frame"
+            />
+          </div>
+          <div class="friendTxtContainer">
+            <div class="friendName">
+              <p>level 10 屁屁</p>
+            </div>
+            <div class="friendTitle">
+              <img src="imgs/volume.png" alt="volume icon" />
+            </div>
+          </div>
+          <div class="friendIcon">
+            <img src="imgs/contact.png" alt="contact icon" />
+          </div></div
+      ></swiper-slide>
+      <!-- 好友3 -->
+      <swiper-slide
+        ><div class="friendContainer offline">
+          <div class="friendPic"></div>
+          <div class="friendTxtContainer">
+            <div class="friendName">
+              <p>level 10 屁屁</p>
+            </div>
+            <div class="friendTitle">
+              <img src="imgs/volume.png" alt="volume icon" />
+            </div>
+          </div>
+          <div class="friendIcon">
+            <img src="imgs/contact.png" alt="contact icon" />
+            <img src="imgs/battle.png" alt="battle icon" />
+          </div></div
+      ></swiper-slide>
+      <!-- 好友4 -->
+      <swiper-slide
+        ><div class="friendContainer offline">
+          <div class="friendPic"></div>
+          <div class="friendTxtContainer">
+            <div class="friendName">
+              <p>level 10 屁屁</p>
+            </div>
+            <div class="friendTitle">
+              <img src="imgs/volume.png" alt="volume icon" />
+            </div>
+          </div>
+          <div class="friendIcon">
+            <img src="imgs/contact.png" alt="contact icon" />
+            <img src="imgs/battle.png" alt="battle icon" />
+          </div></div
+      ></swiper-slide>
+      <!-- 好友5 -->
+      <swiper-slide
+        ><div class="friendContainer offline">
+          <div class="friendPic"></div>
+          <div class="friendTxtContainer">
+            <div class="friendName">
+              <p>level 10 屁屁</p>
+            </div>
+            <div class="friendTitle">
+              <img src="imgs/volume.png" alt="volume icon" />
+            </div>
+          </div>
+          <div class="friendIcon">
+            <img src="imgs/contact.png" alt="contact icon" />
+            <img src="imgs/battle.png" alt="battle icon" />
+          </div></div
+      ></swiper-slide>
+    </swiper-container>
+    <div class="lineFriendContainer">
+      <span>附近</span>
+      <div class="lineFriend"></div>
+    </div>
+    <swiper-container
+      slides-per-view="6"
+      direction="vertical"
+      class="offcanvasBody offcanvasBodyNearby"
+    >
+      <!-- 附近1 -->
+      <swiper-slide>
+        <div class="friendContainer">
+          <div class="friendPic">
+            <img
+              src="imgs/pictureBattle.png"
+              (click)="authService.showModal('isInvitedBattle')"
+              alt="picture frame"
+            />
+          </div>
+          <div class="friendTxtContainer">
+            <div class="friendName">
+              <p>level 10 屁屁</p>
+            </div>
+            <div class="friendTitle">
+              <img src="imgs/volume.png" alt="volume icon" />
+            </div>
+          </div>
+          <div class="friendIcon">
+            <img src="imgs/contact.png" alt="contact icon" />
+          </div>
+        </div>
+      </swiper-slide>
+      <!-- 附近2 -->
+      <swiper-slide>
+        <div class="friendContainer">
+          <div class="friendPic"></div>
+          <div class="friendTxtContainer">
+            <div class="friendName">
+              <p>level 20 屁屁狗</p>
+            </div>
+            <div class="friendTitle">
+              <div class="volumePlaceholder"></div>
+              <img class="volume" src="imgs/volume.png" alt="volume icon" />
+              <img src="imgs/titleCharm.png" alt="title icon" />
+            </div>
+          </div>
+          <div class="friendIcon">
+            <img src="imgs/contact.png" alt="contact icon" />
+            <img src="imgs/battle.png" alt="battle icon" />
+          </div>
+        </div>
+      </swiper-slide>
+      <!-- 附近3 -->
+      <swiper-slide>
+        <div class="friendContainer">
+          <div class="friendPic"></div>
+          <div class="friendTxtContainer">
+            <div class="friendName">
+              <p>level 20 屁屁狗</p>
+            </div>
+            <div class="friendTitle">
+              <div class="volumePlaceholder"></div>
+              <img class="volume" src="imgs/volume.png" alt="volume icon" />
+              <img src="imgs/titleCharm.png" alt="title icon" />
+            </div>
+          </div>
+          <div class="friendIcon">
+            <img src="imgs/contact.png" alt="contact icon" />
+            <img src="imgs/battle.png" alt="battle icon" />
+          </div>
+        </div>
+      </swiper-slide>
+      <!-- 附近4 -->
+      <swiper-slide>
+        <div class="friendContainer">
+          <div class="friendPic"></div>
+          <div class="friendTxtContainer">
+            <div class="friendName">
+              <p>level 20 屁屁狗</p>
+            </div>
+            <div class="friendTitle">
+              <div class="volumePlaceholder"></div>
+              <img class="volume" src="imgs/volume.png" alt="volume icon" />
+              <img src="imgs/titleCharm.png" alt="title icon" />
+            </div>
+          </div>
+          <div class="friendIcon">
+            <img src="imgs/contact.png" alt="contact icon" />
+            <img src="imgs/battle.png" alt="battle icon" />
+          </div>
+        </div>
+      </swiper-slide>
+      <!-- 附近5 -->
+      <swiper-slide>
+        <div class="friendContainer">
+          <div class="friendPic"></div>
+          <div class="friendTxtContainer">
+            <div class="friendName">
+              <p>level 20 屁屁狗</p>
+            </div>
+            <div class="friendTitle">
+              <div class="volumePlaceholder"></div>
+              <img class="volume" src="imgs/volume.png" alt="volume icon" />
+              <img src="imgs/titleCharm.png" alt="title icon" />
+            </div>
+          </div>
+          <div class="friendIcon">
+            <img src="imgs/contact.png" alt="contact icon" />
+            <img src="imgs/battle.png" alt="battle icon" />
+          </div>
+        </div>
+      </swiper-slide>
+      <!-- 附近6 -->
+      <swiper-slide>
+        <div class="friendContainer">
+          <div class="friendPic"></div>
+          <div class="friendTxtContainer">
+            <div class="friendName">
+              <p>level 20 屁屁狗</p>
+            </div>
+            <div class="friendTitle">
+              <div class="volumePlaceholder"></div>
+              <img class="volume" src="imgs/volume.png" alt="volume icon" />
+              <img src="imgs/titleCharm.png" alt="title icon" />
+            </div>
+          </div>
+          <div class="friendIcon">
+            <img src="imgs/contact.png" alt="contact icon" />
+            <img src="imgs/battle.png" alt="battle icon" />
+          </div>
+        </div>
+      </swiper-slide>
+      <!-- 附近7 -->
+      <swiper-slide>
+        <div class="friendContainer">
+          <div class="friendPic"></div>
+          <div class="friendTxtContainer">
+            <div class="friendName">
+              <p>level 20 屁屁狗</p>
+            </div>
+            <div class="friendTitle">
+              <div class="volumePlaceholder"></div>
+              <img class="volume" src="imgs/volume.png" alt="volume icon" />
+              <img src="imgs/titleCharm.png" alt="title icon" />
+            </div>
+          </div>
+          <div class="friendIcon">
+            <img src="imgs/contact.png" alt="contact icon" />
+            <img src="imgs/battle.png" alt="battle icon" />
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
+  <!-- QA彈窗 -->
+  <div
+    class="overlay"
+    *ngIf="authService.isModalVisible['isQA']"
+    (click)="authService.closeModal('isQA')"
+  >
+    <div class="qaContainer" (click)="$event.stopPropagation()">
+      <span class="closeX" (click)="authService.closeModal('isQA')"
+        >&times;</span
+      >
+      <h2>Q&A</h2>
+      <div class="serviceAreaQ">
+        <div class="service">
+          <img src="imgs/contactIcon.png" alt="contact icon" />
+          <p>客服</p>
+        </div>
+        <div class="serviceTxt">
+          <p>
+            親愛的玩家您好,很高興為您服務~<br />如有造成您的不便,還請見諒,我們會時時刻刻提升自己為您做到最好!!<br />今日有什麼困難需要我們幫助的嗎?
+          </p>
+          <a [class.selected]="selectedQuestion === 1" (click)="showAnswer(1)"
+            >Q1 如何在遊戲中更改暱稱?</a
+          >
+          <a [class.selected]="selectedQuestion === 2" (click)="showAnswer(2)"
+            >Q2 如何在遊戲中更改密碼?</a
+          >
+          <a [class.selected]="selectedQuestion === 3" (click)="showAnswer(3)"
+            >Q3 如何在遊戲中打開QA?</a
+          >
+          <a [class.selected]="selectedQuestion === 4" (click)="showAnswer(4)"
+            >Q4 如何在遊戲中返回首頁?</a
+          >
+          <a [class.selected]="selectedQuestion === 5" (click)="showAnswer(5)"
+            >Q5 如何將遊戲加入我的最愛?</a
+          >
+        </div>
+      </div>
+      <div class="userArea">
+        <div class="userTxt">
+          <p>我很無聊~~<br />可以陪我聊天嗎?</p>
+        </div>
+      </div>
+      <div class="serviceAreaA" *ngIf="selectedQuestion">
+        <div class="service">
+          <img src="imgs/contactIcon.png" alt="contact icon" />
+          <p>客服</p>
+        </div>
+        <div class="serviceTxt">
+          <p *ngIf="selectedQuestion === 1">
+            A1:您可以到個人主頁中點選暱稱按下確認即可完成變更
+          </p>
+          <p *ngIf="selectedQuestion === 2">
+            A2:您可以到個人主頁中點選修改密碼按下確認即可完成變更
+          </p>
+          <p *ngIf="selectedQuestion === 3">
+            A3:您可以到左邊側邊欄點選QA圖示即可打開QA
+          </p>
+          <p *ngIf="selectedQuestion === 4">
+            A4:您可以到左邊側邊欄點選logo圖示即可返回首頁
+          </p>
+          <p *ngIf="selectedQuestion === 5">
+            A5:您可以遊戲頁面點選該遊戲圖右下方的愛心即可將遊戲加入我的最愛
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 語言切換彈窗 -->
+  <div
+    class="overlay"
+    *ngIf="authService.isModalVisible['isLanguage']"
+    (click)="authService.closeModal('isLanguage')"
+  >
+    <div class="languageContainer" (click)="$event.stopPropagation()">
+      <h2>語言切換</h2>
+      <div class="languagePicContainer">
+        <div class="languageItem">
+          <div class="langPic">
+            <img src="imgs/twLogo.png" alt="twLogo" />
+          </div>
+          <h5>中文</h5>
+        </div>
+      </div>
+      <button
+        class="btn primary"
+        (click)="authService.closeModal('isLanguage')"
+      >
+        確認
+      </button>
+    </div>
+  </div>
+
+  <!-- 確認登出彈窗 -->
+  <div
+    class="overlay"
+    (click)="authService.closeModal('isLogOut')"
+    *ngIf="authService.isModalVisible['isLogOut']"
+  >
+    <div class="logOutContainer" (click)="$event.stopPropagation()">
+      <span class="closeX" (click)="authService.closeModal('isLogOut')"
+        >&times;</span
+      >
+      <div class="logOutContent">
+        <p>確定要登出嗎?</p>
+      </div>
+      <button class="btn primary" (click)="logOut()">確認</button>
+    </div>
+  </div>
+
+  <!-- mail 彈窗 -->
+  <div
+    class="overlay"
+    (click)="authService.closeModal('isMail')"
+    *ngIf="authService.isModalVisible['isMail']"
+  >
+    <div class="mailContainer" (click)="$event.stopPropagation()">
+      <span class="closeX" (click)="authService.closeModal('isMail')"
+        >&times;</span
+      >
+      <h2>信件</h2>
+      <swiper-container
+        slides-per-view="4.3"
+        direction="vertical"
+        class="mailContent"
+      >
+        <swiper-slide>
+          <div class="mailItem" (click)="showMailContent('System')">
+            <div class="mailItemTitle">
+              <div class="stateIconPic">
+                <div class="stateIcon"></div>
+              </div>
+              <h5>系統維修補償</h5>
+              <p>2023-01-09</p>
+            </div>
+            <div class="giftRemainContainer">
+              <div class="giftRemainPic">
+                <img src="imgs/giftRemain01.png" alt="gift remain" />
+              </div>
+              <p>剩餘10天</p>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="mailItem" (click)="showMailContent('Friend')">
+            <div class="mailItemTitle">
+              <div class="stateIconPic">
+                <div class="stateIcon"></div>
+              </div>
+              <h5>來自外星的信</h5>
+              <p>2035-01-15</p>
+            </div>
+            <div class="giftRemainContainer">
+              <p>剩餘5天</p>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="mailItem" (click)="showMailContent('Trade')">
+            <div class="mailItemTitle">
+              <div class="stateIconPic">
+                <div class="stateIcon"></div>
+              </div>
+              <h5>來自外星的交易</h5>
+              <p>2036-01-09</p>
+            </div>
+            <div class="giftRemainContainer">
+              <div class="giftRemainPic">
+                <img src="imgs/giftRemain02.png" alt="gift remain" />
+              </div>
+              <p>剩餘10天</p>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="mailItem readItem">
+            <div class="mailItemTitle">
+              <div class="stateIconPic">
+                <div class="stateIcon"></div>
+              </div>
+              <h5>系統維修補償</h5>
+              <p>2023-01-09</p>
+            </div>
+            <div class="giftRemainContainer">
+              <div class="giftRemainPic">
+                <img src="imgs/giftRemain03.png" alt="gift remain" />
+              </div>
+              <p>已讀取</p>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="mailItem readItem">
+            <div class="mailItemTitle">
+              <div class="stateIconPic">
+                <div class="stateIcon"></div>
+              </div>
+              <h5>系統維修補償</h5>
+              <p>2023-01-09</p>
+            </div>
+            <div class="giftRemainContainer">
+              <div class="giftRemainPic">
+                <img src="imgs/giftRemain03.png" alt="gift remain" />
+              </div>
+              <p>已讀取</p>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="mailItem readItem">
+            <div class="mailItemTitle">
+              <div class="stateIconPic">
+                <div class="stateIcon"></div>
+              </div>
+              <h5>系統維修補償</h5>
+              <p>2023-01-09</p>
+            </div>
+            <div class="giftRemainContainer">
+              <div class="giftRemainPic">
+                <img src="imgs/giftRemain03.png" alt="gift remain" />
+              </div>
+              <p>已讀取</p>
+            </div>
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="mailItem readItem">
+            <div class="mailItemTitle">
+              <div class="stateIconPic">
+                <div class="stateIcon"></div>
+              </div>
+              <h5>系統維修補償</h5>
+              <p>2023-01-09</p>
+            </div>
+            <div class="giftRemainContainer">
+              <div class="giftRemainPic">
+                <img src="imgs/giftRemain03.png" alt="gift remain" />
+              </div>
+              <p>已讀取</p>
+            </div>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+      <div class="btnContainer">
+        <button class="btn primary">全選</button>
+        <button class="btn primary">領取</button>
+        <button class="btn primary">已讀刪除</button>
+        <button class="btn primary">刪除</button>
+      </div>
+    </div>
+    <!-- mail 系統維修補償內容 -->
+    <div
+      class="subMailContainer"
+      *ngIf="authService.isModalVisible['isMailContentSystem']"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="subMailContainerTitle">
+        <span class="closeX">&times;</span>
+        <!-- <span class="closeX" (click)="closeSubMailModal()">&times;</span> -->
+        <h2>郵件</h2>
+      </div>
+      <div class="subMailContent">
+        <div class="subMailTxtContent">
+          <h3>系統維修補償</h3>
+          <h4>2023-01-09</h4>
+          <p>親愛的玩家你好,本系統升級故暫停10小時,為表誠意附上補償獎勵。</p>
+        </div>
+        <div class="subMailRemain">
+          <p>郵件剩餘時間10天</p>
+        </div>
+        <div class="giftGetContainer">
+          <div class="giftGetPic">
+            <div class="giftItem"></div>
+            <div class="giftItem"></div>
+            <div class="giftItem"></div>
+            <div class="giftItem"></div>
+          </div>
+          <div class="giftGetBtn">
+            <button class="btn primary">領取</button>
+          </div>
+        </div>
+        <div class="subBtnContainer">
+          <button class="btn primary">刪除</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- mail 一般mail內容 -->
+    <div
+      class="subMailContainer"
+      *ngIf="authService.isModalVisible['isMailContentFriend']"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="subMailContainerTitle">
+        <span class="closeX">&times;</span>
+        <!-- <span class="closeX" (click)="closeSubMailModal()">&times;</span> -->
+        <h2>郵件</h2>
+      </div>
+      <div class="subMailContent">
+        <div class="subMailTxtContent friendTxtContent">
+          <h3>來自外星的信</h3>
+          <h4>2023-01-09</h4>
+          <p>6666666666666666<br />來決鬥吧<br />哈哈ㄏ哈哈哈哈哈哈ㄏㄏ哈ㄏ</p>
+        </div>
+        <div class="subMailRemain">
+          <p>郵件剩餘時間5天</p>
+        </div>
+        <div class="subBtnContainer">
+          <button class="btn primary">刪除</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- mail 交易內容 -->
+    <div
+      class="subMailContainer"
+      *ngIf="authService.isModalVisible['isMailContentTrade']"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="subMailContainerTitle">
+        <span class="closeX">&times;</span>
+        <!-- <span class="closeX" (click)="closeSubMailModal()">&times;</span> -->
+        <h2>郵件</h2>
+      </div>
+      <div class="subMailContent">
+        <div class="subMailTxtContent">
+          <h3>來自外星的交易</h3>
+          <h4>2023-01-09</h4>
+          <p>
+            親愛的玩家你好,外星玩家對您發起一筆交易。<br />
+            交易如下:<br />
+            一個普通飼料及強化寶珠一枚換取物資為一個高級飼料及減免寶石
+          </p>
+        </div>
+        <div class="subMailRemain">
+          <p>郵件剩餘時間10天</p>
+        </div>
+        <div class="giftTradeContainer">
+          <div class="giftTradePic">
+            <div class="giftItem"></div>
+            <div class="giftItem"></div>
+            <p>=</p>
+            <div class="giftItem">
+              <span class="giftItemCount1">1/1</span>
+            </div>
+            <div class="giftItem">
+              <span class="giftItemCount2">0/1</span>
+            </div>
+          </div>
+          <div class="giftTradeBtn">
+            <button class="btn primary">領取</button>
+          </div>
+        </div>
+        <div class="subBtnContainer">
+          <button class="btn primary">刪除</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 挖礦 -->
+  <div
+    class="overlay"
+    (click)="authService.closeModal('isMining')"
+    *ngIf="authService.isModalVisible['isMining']"
+  >
+    <div class="miningContainer" (click)="$event.stopPropagation()">
+      <span class="closeX" (click)="authService.closeModal('isMining')"
+        >&times;</span
+      >
+      <div class="miningTitle">
+        <h2>探險挖礦</h2>
+        <p>剩餘挖礦次數{{ remainingMining }}次</p>
+      </div>
+      <div class="imagesContainer">
+        <div
+          class="image"
+          *ngFor="let _ of [].constructor(numberOfImgs); let i = index"
+          (click)="handleClicked(i)"
+        >
+          <img
+            [src]="imgStates[i].isCountingDown ? hoverImg : initialImg"
+            [class.hover-effect]="!imgStates[i].isCountingDown"
+            alt="mining image"
+          />
+          <div class="countdown" *ngIf="imgStates[i].isCountingDown">
+            {{ imgStates[i].countdownText }}
+          </div>
+        </div>
+      </div>
+      <div class="miningBtnContainer">
+        <button class="btn primary">領取</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 對決確認彈窗 -->
+  <div
+    class="overlay"
+    *ngIf="authService.isModalVisible['isBattle']"
+    (click)="authService.closeModal('isBattle')"
+  >
+    <div class="battleContainer" (click)="$event.stopPropagation()">
+      <span class="closeX" (click)="authService.closeModal('isBattle')"
+        >&times;</span
+      >
+      <h2>提示</h2>
+      <p>您將對小鹿斑比發起對決邀請</p>
+      <button class="btn primary" (click)="autoChangeBattleImg()">確認</button>
+    </div>
+  </div>
+
+  <!-- 等待對決 發起人視角 -->
+  <div class="overlay" *ngIf="isWaitingBattle">
+    <div class="goToBattlePic">
+      <img [src]="battleImg" alt="battle waiting picture" />
+      <span (click)="closeWhackAMoleModal()">取消</span>
+    </div>
+  </div>
+
+  <!-- 等待對決 被邀請人視角 -->
+  <div
+    class="overlay"
+    *ngIf="authService.isModalVisible['isInvitedBattle']"
+    (click)="authService.closeModal('isInvitedBattle')"
+  >
+    <div class="invitedBattleContainer" (click)="$event.stopPropagation()">
+      <span class="closeX" (click)="authService.closeModal('isInvitedBattle')"
+        >&times;</span
+      >
+      <h2>提示</h2>
+      <p>屁屁蛋請求對戰邀請</p>
+      <div class="BatteBtnContainer">
+        <button
+          class="btn secondary accept"
+          (click)="authService.closeModal('isInvitedBattle')"
+        >
+          接受
+        </button>
+        <button
+          class="btn secondary cancel"
+          (click)="authService.closeModal('isInvitedBattle')"
+        >
+          拒絕
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <app-synthesis #synthesis></app-synthesis>
+</div>
+
+<!-- 打地鼠 -->
+<div class="overlay" *ngIf="authService.isModalVisible['isWhackAMole']">
+  <div class="WhackAMoleContainer">
+    <span class="closeX" (click)="closeWhackAMoleModal()">&times;</span>
+    <h2>教訓寶寶PK賽</h2>
+    <p *ngIf="authService.isModalVisible['isBattleStarted']">
+      得分: {{ score }}分
+    </p>
+    <div
+      class="groundContainer"
+      *ngIf="authService.isModalVisible['isBattleStarted']"
+    >
+      <div
+        class="ground"
+        *ngFor="let ground of grounds; let i = index"
+        (click)="onGroundClick(i)"
+      >
+        <img
+          *ngIf="ground.isVisible"
+          [src]="ground.image"
+          alt="monster'baby picture"
+        />
+      </div>
+    </div>
+
+    <!-- 遊戲開始倒數 -->
+    <div *ngIf="authService.isModalVisible['isBeforeBattele']">
+      <h2>遊戲即將開始: {{ whackAMoleCountdown }}</h2>
+    </div>
+    <!-- 遊戲結束顯示 -->
+    <div *ngIf="authService.isModalVisible['isBattleOver']">
+      <h2>遊戲結束</h2>
+      <img src="imgs/cryBaby.png" alt="monster'baby picture" />
+    </div>
+
+    <button
+      *ngIf="authService.isModalVisible['isBattleOver']"
+      class="btn secondary"
+    >
+      結果
+    </button>
+  </div>
+</div>

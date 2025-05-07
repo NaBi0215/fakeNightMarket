@@ -1,0 +1,206 @@
+<app-header [logoUrl]="logoUrl"></app-header>
+<app-marquee></app-marquee>
+<app-nav-bar></app-nav-bar>
+
+<div class="restaurantWrap">
+  <div class="cookingContainer">
+    <div class="cookingContentContainer">
+      <div class="cookingContent">
+        <div class="dishesItem"></div>
+        <span>✚</span>
+        <div class="dishesItem"></div>
+        <span>✚</span>
+        <div class="dishesItem"></div>
+        <span>✚</span>
+        <div class="dishesItem"></div>
+        <span>•</span>
+        <span>•</span>
+        <span>•</span>
+        <span>•</span>
+        <div class="finishedDishes"></div>
+      </div>
+      <div class="cookingBtn">
+        <button class="btn secondary">製作</button>
+      </div>
+    </div>
+    <div class="ratingDishesPic">
+      <img src="imgs/gourmet.png" alt="" />
+    </div>
+  </div>
+  <div class="dishesScoreContainer">
+    <!-- 總積分排名 -->
+    <div class="playerScoreContainer">
+      <div class="scoreTitle">
+        <span>•</span>
+        <h3>總積分排名</h3>
+        <span>•</span>
+      </div>
+      <div class="scoreContent">
+        <div class="scoreItem">
+          <h4>1</h4>
+          <h5>玩家名稱</h5>
+          <p>8496465</p>
+          <div class="gamePropsContainer">
+            <div class="gameProps"></div>
+            <div class="gameProps"></div>
+          </div>
+        </div>
+        <div class="scoreItem">
+          <h4>2</h4>
+          <h5>玩家名稱</h5>
+          <p>8496465</p>
+          <div class="gamePropsContainer">
+            <div class="gameProps"></div>
+            <div class="gameProps"></div>
+          </div>
+        </div>
+        <div class="scoreItem">
+          <h4>3</h4>
+          <h5>玩家名稱</h5>
+          <p>8496465</p>
+          <div class="gamePropsContainer">
+            <div class="gameProps"></div>
+            <div class="gameProps"></div>
+          </div>
+        </div>
+      </div>
+      <div class="scoreMyself">
+        <h4>8</h4>
+        <h5>自己</h5>
+        <p>8496465</p>
+        <div class="myGamePropsContainer">
+          <div class="myGameProps"></div>
+          <div class="myGameProps"></div>
+        </div>
+      </div>
+      <div class="scoreFooter">
+        <span>•</span>
+        <span>•</span>
+      </div>
+    </div>
+    <div class="totalScoreContainer">
+      <h3>總評級:</h3>
+      <div class="totalScore">
+        <img src="imgs/scoreA.png" alt="score A icon" />
+      </div>
+      <!-- 料理圖鑑 稱號btn -->
+      <div class="dishesBtnContainer">
+        <div class="dishesHandbookOutside" (click)="showDishesHandbook()">
+          <div class="dishesHandbook">
+            <img src="imgs/dishesHandbook.png" alt="dishes handbook icon" />
+          </div>
+        </div>
+        <div class="dishesTrophyOutside" (click)="showAppellation()">
+          <div class="dishesTrophy">
+            <img src="imgs/dishesTrophy.png" alt="dishes trophy icon" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 料理圖鑑彈窗 -->
+<div class="overlay" *ngIf="isDishesHandbook" (click)="closeModal()">
+  <div class="dishesHandbookContainer" (click)="$event.stopPropagation()">
+    <span class="closeX" (click)="closeModal()">&times;</span>
+    <h2>料理圖鑑</h2>
+    <!-- 第一row黃色 -->
+    <div class="dishesHandbookContent">
+      <div class="dishesHandbookItem4">
+        <div class="foodItem"></div>
+        <div class="foodItem"></div>
+        <div class="foodItem"></div>
+        <div class="foodItem"></div>
+        <span *ngFor="let dot of getDots(4)">{{ dot }}</span>
+        <div class="finishedFoodItem"></div>
+        <span class="newDishesHandbook">•</span>
+      </div>
+      <!-- 第二row -->
+      <div class="dishesHandbookItem2">
+        <div class="foodItem"></div>
+        <div class="foodItem"></div>
+        <span *ngFor="let dot of getDots(2)">{{ dot }}</span>
+        <div class="finishedFoodItem"></div>
+        <span class="newDishesHandbook">•</span>
+      </div>
+      <!-- 第三row -->
+      <div class="dishesHandbookItem2 readItem">
+        <div class="foodItem"></div>
+        <div class="foodItemQuestion"><p>?</p></div>
+        <div class="foodItemQuestion"><p>?</p></div>
+        <span *ngFor="let dot of getDots(3)">{{ dot }}</span>
+        <div class="finishedFoodItem"></div>
+      </div>
+      <!-- 第四row -->
+      <div class="dishesHandbookItem2 readItem">
+        <div class="foodItem"></div>
+        <div class="foodItemQuestion"><p>?</p></div>
+        <div class="foodItemQuestion"><p>?</p></div>
+        <span *ngFor="let dot of getDots(3)">{{ dot }}</span>
+        <div class="finishedFoodItem"></div>
+      </div>
+    </div>
+    <div class="btnContainer">
+      <div class="bagOutsidePosition">
+        <div class="bagOutside">
+          <div class="bag">
+            <img src="imgs/bagClicked.png" alt="bag icon" />
+          </div>
+        </div>
+      </div>
+      <button class="btn primary">領取</button>
+    </div>
+  </div>
+</div>
+
+<!-- 稱號彈窗 -->
+<div class="overlay" *ngIf="isAppellation" (click)="closeModal()">
+  <div class="appellationContainer" (click)="$event.stopPropagation()">
+    <span class="closeX" (click)="closeModal()">&times;</span>
+    <h2>獲得稱號</h2>
+    <!-- 第一row -->
+    <div class="appellationContent">
+      <div class="appellationItem4">
+        <div class="appellationItem"></div>
+        <div class="appellationItem"></div>
+        <div class="appellationItem"></div>
+        <div class="appellationItem"></div>
+        <h5 class="smelly">[臭味之王]</h5>
+        <span class="newAppellation">•</span>
+      </div>
+      <!-- 第二row -->
+      <div class="appellationItem4 readItem">
+        <div class="appellationItem"></div>
+        <div class="appellationItem"></div>
+        <div class="appellationItem"></div>
+        <div class="appellationItem"></div>
+        <h5 class="fiveSpice">[五香釋迦]</h5>
+      </div>
+      <!-- 第三row -->
+      <div class="appellationItem1 readItem">
+        <div class="appellationItem"></div>
+        <div class="ItemTxt">
+          <p class="levelATxt">獲得20種A等級料理</p>
+          <p class="levelATxt">(15/20)</p>
+        </div>
+        <h5 class="levelA">[A極大師]</h5>
+      </div>
+      <!-- 第四row -->
+      <div class="appellationItem1">
+        <div class="appellationItem"></div>
+        <div class="ItemTxt">
+          <p class="levelBTxt">獲得15種B等級料理</p>
+          <p class="levelBTxt">(16/15)</p>
+        </div>
+        <h5 class="levelB">[控B小能手]</h5>
+        <span class="newAppellation">•</span>
+      </div>
+    </div>
+    <div class="btnContainer">
+      <button class="btn primary">領取</button>
+    </div>
+  </div>
+</div>
+
+<app-copyright></app-copyright>

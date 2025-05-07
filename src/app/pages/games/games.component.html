@@ -1,0 +1,75 @@
+<!-- <app-loading [isLoading]="isLoading"></app-loading> -->
+<div *ngIf="!isLoading">
+  <app-header></app-header>
+  <app-marquee></app-marquee>
+  <app-nav-bar [logoUrl]="logoUrl"></app-nav-bar>
+  <app-game-info></app-game-info>
+  <div *ngIf="gameService.isGameList">
+    <app-game-list
+      [games]="gameService.favoriteList"
+      [favoriteList]="gameService.favoriteList"
+      (removeFavoriteEvent)="gameService.removeFavorite($event)"
+    ></app-game-list>
+  </div>
+
+  <div class="gamesContainer">
+    <div class="wheel">
+      <div
+        class="game"
+        *ngFor="let category of gameCategories"
+        [ngClass]="{
+          'selected-category': selectedGameCategory === category.category
+        }"
+        (click)="selectGame(category.category)"
+      >
+        {{ getCategoryName(category.category) }}
+      </div>
+    </div>
+    <div class="wheelPic">
+      <img src="imgs/arc.png" alt="" />
+    </div>
+    <div class="cards">
+      <div *ngFor="let game of filteredGames" class="card">
+        <div class="cardPics">
+          <div
+            class="cardPicIcon"
+            (click)="toggleFavorite(game); $event.stopPropagation()"
+          >
+            <img
+              [src]="
+                isFavorite(game.gameId)
+                  ? 'imgs/loveCircled.png'
+                  : 'imgs/loveCircledWhite.png'
+              "
+              *ngIf="isFavoriteIcon"
+              alt="favorite icon"
+            />
+          </div>
+          <div class="cardPic">
+            <img [src]="game.imgUrl" alt="game picture" />
+          </div>
+        </div>
+        <div class="cardTxt">
+          <h3>{{ game.gameName }}</h3>
+        </div>
+        <div class="playContainer">
+          <button
+            (click)="gameService.navigateToGameFree(game.gameCode, 'pc', 'tw')"
+          >
+            免費
+          </button>
+          <button
+            (click)="gameService.navigateToGame(game.gameCode, 'pc', 'tw')"
+          >
+            開始
+          </button>
+          <img class="instructionImg" src="imgs/instruction01.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-egg></app-egg>
+  <app-online-bonus></app-online-bonus>
+  <app-purse></app-purse>
+  <app-copyright></app-copyright>
+</div>

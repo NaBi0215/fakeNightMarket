@@ -1,0 +1,247 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .synthesisContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .bagContent {
+      position: relative;
+      text-align: center;
+      width: 700px;
+      height: 780px;
+      border: 3px solid #b9ccda;
+      border-left: 0px;
+      border-radius: 0px 35px 35px 0px;
+      background: #395293;
+      &.activeBag {
+        border-left: 3px solid #b9ccda;
+        border-radius: 35px;
+      }
+      h2 {
+        color: #ffffff;
+        font-size: 2.5rem;
+      }
+      .nextPage {
+        color: #ffffff;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5); /* 初始立體效果 */
+        font-size: 3.5rem;
+        display: inline-block;
+        text-align: center;
+        position: absolute;
+        right: 10px;
+        top: 380px;
+        cursor: pointer;
+        &:hover {
+          text-shadow: none;
+          transform: translateY(2px);
+          color: #ffffffcc;
+        }
+      }
+      .prevPage {
+        color: #ffffff;
+        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+        font-size: 3.5rem;
+        display: inline-block;
+        text-align: center;
+        position: absolute;
+        left: 10px;
+        top: 380px;
+        cursor: pointer;
+        &:hover {
+          text-shadow: none;
+          transform: translateY(2px);
+          color: #ffffffcc;
+        }
+      }
+      .bagSpaceContent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 5px;
+        padding: 0px 7%;
+        .bagSpace {
+          width: 75px;
+          height: 75px;
+          border-radius: 10px;
+          background-color: #ffffff99;
+          border: 3px solid #2a365e80;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          &.alternateStyle {
+            background: #ffffff57;
+            &::after {
+              position: absolute;
+              content: "+";
+              color: #ffffff;
+              font-size: 4rem;
+              font-weight: bold;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+          img {
+            cursor: pointer;
+          }
+        }
+      }
+      p {
+        color: #ffffff;
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .synthesisContent,
+  .equipmentContent,
+  .strengthenContent {
+    text-align: center;
+    border: 3px solid #b9ccda;
+    border-right: 0px;
+    border-radius: 35px 0px 0px 35px;
+    background: #395293;
+    width: 550px;
+    height: 780px;
+    h2 {
+      color: #ffffff;
+      font-size: 2.5rem;
+    }
+    .combineBoxContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+      gap: 2%;
+      margin-top: 30%;
+      .plus {
+        font-size: 4.5rem;
+        color: #363636;
+        font-weight: bold;
+      }
+    }
+    h3 {
+      color: #b9ccda;
+      font-size: 3rem;
+      margin-top: 15%;
+    }
+    button {
+      margin-top: 10%;
+    }
+    .box {
+      width: 75px;
+      height: 75px;
+      background: #ffffff99;
+      border: 3px solid #2a365e80;
+      border-radius: 8px;
+    }
+    .finishedBox {
+      width: 130px;
+      height: 130px;
+      background: #ffffff99;
+      border: 3px solid #2a365e80;
+      border-radius: 8px;
+    }
+    .dots {
+      font-size: 2.5rem;
+      color: #363636;
+      font-weight: bold;
+      letter-spacing: 5px;
+    }
+  }
+  .equipmentContent {
+    .equipmentBoxContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4%;
+      margin-top: 40%;
+      .box {
+        &.alternateStyle {
+          background: rgba(150, 150, 150, 0.384);
+          &::after {
+            content: "+";
+            color: #ffffff;
+            font-size: 4rem;
+            font-weight: bold;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+      }
+    }
+    h3 {
+      color: #e53131;
+      font-size: 2.5rem;
+      margin-top: 18%;
+    }
+  }
+  .strengthenBoxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1%;
+    margin-top: 30%;
+  }
+}
+
+// bag物品彈窗
+.bagDetailContainer {
+  background-color: #2a365dcc;
+  border-radius: 8px;
+  width: 310px;
+  height: auto;
+  color: #ffffffe1;
+  .detailTitleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5%;
+    padding: 10px 10px;
+    .detailTitleTxt {
+      h5 {
+        font-size: 1rem;
+        margin: 0;
+      }
+      span {
+        color: #ffffff94;
+        font-size: 0.8rem;
+      }
+    }
+  }
+  .line {
+    width: 293px;
+    height: 2px;
+    background-color: #ffffff;
+    margin-top: 3%;
+    margin: 5px 10px;
+  }
+  p {
+    font-size: 1rem;
+    padding: 10px 10px;
+    letter-spacing: 1px;
+  }
+  button {
+    width: 100%;
+    height: auto;
+    background-color: #4a779b;
+    outline: none;
+    border: none;
+    border-radius: 0px 0px 8px 8px;
+    color: #ffffff94;
+    padding: 2% 0px;
+    cursor: pointer;
+  }
+}

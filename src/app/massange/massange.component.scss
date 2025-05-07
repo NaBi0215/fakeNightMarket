@@ -1,0 +1,210 @@
+@keyframes bounceEffect {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-5px);
+  }
+  30% {
+    transform: translateY(-25px);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  70% {
+    transform: translateY(-10px);
+  }
+  90% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.massangeWrapper {
+  position: absolute;
+  z-index: 2;
+  top: 230px;
+  left: 100px;
+  img {
+    cursor: pointer;
+    transition: transform 1.2s ease;
+    &.bounce {
+      animation: bounceEffect 1.2s ease;
+    }
+  }
+  .newMassange {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    right: 8px;
+  }
+}
+
+.massangeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeeed9;
+  border-radius: 35px;
+  padding: 5px;
+  position: absolute;
+  z-index: 2;
+  top: 230px;
+  left: 100px;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  animation: fadeInUp 1.2s ease forwards;
+  img {
+    cursor: pointer;
+  }
+  .line {
+    width: 2px;
+    height: 40px;
+    background-color: #488c95;
+  }
+
+  .circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #488c95;
+  }
+
+  .playerPic {
+    width: 62px;
+    height: 62px;
+    background-color: #c39e9e;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    .innerNewMassange {
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+      top: 7px;
+      right: 5px;
+    }
+  }
+}
+
+.dialogBox {
+  position: absolute;
+  z-index: 10;
+  background-color: #ddddddd9;
+  border-radius: 0px 30px 30px 30px;
+  padding: 10px;
+  width: 320px;
+  height: 180px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -20px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 20px 0px;
+    border-color: transparent transparent #ddddddd9 transparent;
+    transform: rotate(180deg);
+  }
+  .BoxContentWrap {
+    display: flex;
+    flex-grow: 1;
+    .BoxContentPicContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      .BoxContentPic {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #c39e9e;
+        position: relative;
+        .onlineStatus {
+          width: 10px;
+          height: 10px;
+          background-color: #44ff00;
+          border-radius: 50%;
+          position: absolute;
+          top: 35px;
+          right: 0px;
+        }
+      }
+      p {
+        color: #ffffff;
+        font-size: 0.8rem;
+        margin: 0;
+        margin-top: 3%;
+      }
+    }
+    .BoxContentTxt {
+      padding: 2% 5%;
+      .friendTxt {
+        margin-bottom: 10%;
+        text-align: right;
+        p {
+          margin: 0;
+          text-align: left;
+          color: #ffffff;
+        }
+        span {
+          font-size: 0.7rem;
+          color: #837c7c;
+        }
+      }
+
+      .myselfTxt {
+        text-align: left;
+        p {
+          margin: 0;
+          text-align: right;
+          color: #837c7c;
+        }
+        span {
+          font-size: 0.7rem;
+          color: #837c7c;
+        }
+      }
+    }
+  }
+  .inputContainer {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 5%;
+    input {
+      width: 100%;
+      margin-right: 5px;
+      border-radius: 7px;
+      border: 0;
+      outline: 0;
+      height: 24px;
+      padding: 0px 5%;
+      color: #837c7c;
+    }
+  }
+}

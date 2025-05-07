@@ -1,0 +1,25 @@
+<div class="copyRight" (click)="handleClick()">
+  <div class="copyRightPic">
+    <img src="imgs/18.png" alt="" />
+  </div>
+  <div class="copyRightTxt">
+    <p>本遊戲為免費使用，避免沉迷。</p>
+    <ul>
+      <li>本遊戲情節涉及娛樂類，依照遊戲軟體分級管理辦法</li>
+      <li>遊戲以法定成年人為訴求對象</li>
+      <li>
+        遊戲不提供"現金交易賭博"或其相關類似行為，虛擬遊戲幣僅作為遊戲內使用，沒有提供兌換現金或任何禮品及實體獎品，僅提供使用者娛樂用途。
+      </li>
+      <li>遊戲內的所有遊戲狀況僅為娛樂性質。</li>
+    </ul>
+    <h4>
+      服務專線：(01)1231231 | 客服傳真：(01)12345678 |
+      服務信箱:nnnnnnnnnn.service{{ "@11111" }}.com
+    </h4>
+    <h4 class="center">
+      <a (click)="authService.showModal('isTermsOfUse')">使用者條款</a> |
+      <a (click)="authService.showModal('isPrivacy')">隱私權政策</a>
+    </h4>
+    <h3>Nabi Copyright{{ "@2025 ALL Rights Reserved" }}</h3>
+  </div>
+</div>

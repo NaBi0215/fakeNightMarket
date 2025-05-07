@@ -1,0 +1,193 @@
+<app-header [logoUrl]="logoUrl"></app-header>
+<app-marquee></app-marquee>
+<app-nav-bar></app-nav-bar>
+
+<div class="petContainer">
+  <div class="petPicContainer">
+    <div class="dogPic">
+      <img src="imgs/cat.jpg" alt="pet dog" />
+    </div>
+    <div class="petName">
+      <img src="imgs/petGirl.png" alt="pet girl" />
+      <input type="text" placeholder="小小吉姆" />
+      <img class="petNameRevise" src="imgs/revise.png" alt="revise" />
+    </div>
+  </div>
+  <div class="petChangeBtnContainer">
+    <div class="petChangeOutsideCircle">
+      <div class="petChange">
+        <img src="imgs/petChange.png" alt="pets icon" (click)="changePet()" />
+      </div>
+    </div>
+    <div *ngIf="isPet" class="petChangeBox">
+      <button>寵物1</button>
+      <button class="petLine">寵物2</button>
+    </div>
+  </div>
+
+  <div class="petTxtContainer">
+    <!-- 餵食 陪玩 -->
+    <div class="entertainmentBtnContainer">
+      <div class="feedingFoodContainer">
+        <div class="feedingFood">
+          <img
+            src="imgs/feedingFood.png"
+            alt="food icon"
+            (click)="toggleFeedingFood()"
+          />
+        </div>
+        <!-- 內部框 -->
+        <div class="foodsContainerOutside" [ngClass]="{ show: isFeedingfoods }">
+          <div class="arrow">&lt;</div>
+          <div class="foodsContainer">
+            <div class="foodxBox" *ngFor="let box of boxes"></div>
+          </div>
+        </div>
+      </div>
+      <div class="playingGamesContainer">
+        <div class="playingGames">
+          <img
+            src="imgs/playingGame.png"
+            alt="ball icon"
+            (click)="togglePlayingGame()"
+          />
+        </div>
+        <!-- 內部框 -->
+        <div
+          class="playingGamesContainerOutside"
+          [ngClass]="{ show: isPlayingGame }"
+        >
+          <div class="arrow">&lt;</div>
+          <div class="gamesContainer">
+            <div class="gamesBox" *ngFor="let box of boxes"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 左側 -->
+    <div class="level">
+      <div class="levelTitle">
+        <h3>L.V. 60</h3>
+        <img src="imgs/fire.png" alt="" />
+        <img src="imgs/restless.png" alt="" />
+      </div>
+      <div class="levelBar">
+        <div class="progressBar">
+          <div class="progressFill" style="width: 83%"></div>
+        </div>
+        <span class="progressNumber">83%</span>
+      </div>
+      <div class="levelSkill">
+        <h5>被動技能:</h5>
+        <p>
+          被動技能早期含義是出自角色扮演類遊戲的設定，是為了豐富遊戲要素而出現的一種需求，與主動技能相對，一般是不需要玩家進行指令操作或無法操作的。
+        </p>
+      </div>
+      <div class="hungryBarContainer">
+        <div class="hungryBar">
+          <img src="imgs/food.png" alt="food icon" />
+          <div class="progressBar">
+            <div class="progressFill" style="width: 50%"></div>
+          </div>
+        </div>
+        <span class="progressBarNumber">50 / 100</span>
+      </div>
+      <div class="moodBarContainer">
+        <div class="moodBar">
+          <img src="imgs/mood.png" alt="mood icon" />
+          <div class="progressBar">
+            <div class="progressFill" style="width: 50%"></div>
+          </div>
+        </div>
+        <span class="progressBarNumber">50 / 100</span>
+      </div>
+      <div class="stateBarContainer">
+        <div class="stateBar">
+          <img src="imgs/heart.png" alt="heart icon" />
+          <div class="progressBar">
+            <div class="progressFill" style="width: 50%"></div>
+          </div>
+        </div>
+        <span class="progressBarNumber">500 / 1000</span>
+      </div>
+    </div>
+    <!-- 右側 -->
+    <div class="strength">
+      <div class="strengthBarContainer">
+        <div class="strengthBar">
+          <h3>體力</h3>
+          <div class="progressStrengthBar">
+            <div class="progressStrengthFill" style="width: 50%"></div>
+          </div>
+        </div>
+        <span class="progressStrengthBarNumber">5000 / 10000</span>
+      </div>
+
+      <div class="attackBarContainer">
+        <div class="attackBar">
+          <h3 class="barTitle">攻擊力</h3>
+          <div class="progressMoreBigBar">
+            <div class="progressFill" style="width: 90%"></div>
+          </div>
+        </div>
+        <span class="progressBarNumber">90 / 100</span>
+      </div>
+
+      <div class="defenseBarContainer">
+        <div class="defenseBar">
+          <h3 class="barTitle">防禦力</h3>
+          <div class="progressMoreBigBar">
+            <div class="progressFill" style="width: 30%"></div>
+          </div>
+        </div>
+        <span class="progressBarNumber">30 / 100</span>
+      </div>
+
+      <div class="agileBarContainer">
+        <div class="agileBar">
+          <h3 class="barTitle">靈活度</h3>
+          <div class="progressMoreBigBar">
+            <div class="progressFill" style="width: 25%"></div>
+          </div>
+        </div>
+        <span class="progressBarNumber">25 / 100</span>
+      </div>
+
+      <div class="treasureBarContainer">
+        <div class="treasureBar">
+          <h3 class="barTitle">掉寶率</h3>
+          <div class="progressMoreBigBar">
+            <div class="progressFill" style="width: 5%"></div>
+          </div>
+        </div>
+        <span class="progressBarNumber">5%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="equipmentBtnContainer">
+  <div class="equipmentContainer">
+    <div class="equipment">
+      <img
+        src="imgs/equipmentClothing.png"
+        (click)="showEquipmentModal()"
+        alt="equipment icon"
+      />
+    </div>
+  </div>
+  <div class="equipmentContainer">
+    <div class="equipment">
+      <img
+        src="imgs/equipmentTool.png"
+        (click)="showStrengthenModal()"
+        alt="equipment icon"
+      />
+    </div>
+  </div>
+</div>
+
+<app-copyright></app-copyright>
+
+<app-synthesis #synthesis></app-synthesis>

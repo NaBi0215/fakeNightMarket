@@ -1,0 +1,53 @@
+.purseContainer {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  bottom: 0;
+  right: 0;
+  background-color: #395293d9;
+  width: 30%;
+  height: auto;
+  padding: 0.5%;
+  border-radius: 30px 0px 0px 0px;
+  z-index: 2;
+  color: white;
+  .purse {
+    // outline: 1px solid blueviolet;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
+    .pursePic {
+      max-width: 100%;
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+    .purseTxt label {
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding-right: 20px;
+      padding: 0px 80px;
+    }
+    .purseTxt span {
+      font-size: 1.5rem;
+      border: none;
+      text-align: center;
+      flex: 1;
+    }
+    .loadingTxt {
+      font-size: 1.5rem;
+      border: none;
+      text-align: center;
+      flex: 1;
+    }
+    .purseBuy {
+      span {
+        font-size: 2rem;
+        cursor: pointer;
+      }
+    }
+  }
+}

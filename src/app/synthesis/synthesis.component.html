@@ -1,0 +1,93 @@
+<div class="overlay" (click)="closeSynthesisModal()" *ngIf="isSynthesis">
+  <div class="synthesisContainer" (click)="$event.stopPropagation()">
+    <div class="synthesisContent" *ngIf="isSynthesisContent">
+      <h2>素材合成</h2>
+      <div class="combineBoxContainer">
+        <div class="box"></div>
+        <span class="plus">+</span>
+        <div class="box"></div>
+        <span class="dots">••••</span>
+        <div class="finishedBox"></div>
+      </div>
+      <h3>成功率 : 80%</h3>
+      <button class="btn secondary">合成</button>
+    </div>
+
+    <!-- pet頁面 裝備 -->
+    <div class="equipmentContent" *ngIf="isEquipmentContent">
+      <h2>裝備</h2>
+      <div class="equipmentBoxContainer">
+        <div
+          class="box"
+          *ngFor="let box of equipmentBox; let i = index"
+          [ngClass]="{ alternateStyle: i >= equipmentBox.length - 2 }"
+        ></div>
+      </div>
+      <h3>戰鬥力: 16518231</h3>
+      <button class="btn secondary">合成</button>
+    </div>
+
+    <!-- pet頁面 強化裝備 -->
+    <div class="strengthenContent" *ngIf="isStrengthenContent">
+      <h2>強化裝備</h2>
+      <div class="strengthenBoxContainer">
+        <div class="box"></div>
+        <span class="dots">••••••</span>
+        <div class="finishedBox"></div>
+      </div>
+      <h3>成功率: 80%</h3>
+      <button class="btn secondary">強化</button>
+    </div>
+
+    <!-- 背包彈窗 -->
+    <div
+      class="bagContent"
+      *ngIf="isBagContent"
+      [ngClass]="{ activeBag: isBagActive }"
+    >
+      <span class="closeX" (click)="closeSynthesisModal()">&times;</span>
+
+      <span class="prevPage" (click)="prevPage()" *ngIf="currentPage > 1"
+        >&lt;</span
+      >
+      <span
+        class="nextPage"
+        (click)="nextPage()"
+        *ngIf="currentPage < totalPage"
+        >&gt;</span
+      >
+      <h2>背包</h2>
+      <div class="bagSpaceContent">
+        <div
+          class="bagSpace"
+          *ngFor="let space of bagSpaces; let i = index"
+          [ngClass]="{ alternateStyle: !space.image }"
+        >
+          <img
+            *ngIf="space.image"
+            [src]="space.image"
+            (click)="showImgDetail(space)"
+            alt="{{ space.name }}"
+          />
+        </div>
+      </div>
+      <p>{{ currentPage }} / {{ totalPage }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- bag物品彈窗 -->
+<div class="overlay" (click)="closeModal()" *ngIf="isBagDetail">
+  <div class="bagDetailContainer" (click)="$event.stopPropagation()">
+    <div class="detailTitleContainer">
+      <img src="imgs/vegetable.png" alt="vegetable icon" />
+      <div class="detailTitleTxt">
+        <h5>{{ selectedBagItem?.name }}</h5>
+        <span>{{ selectedBagItem?.category }}</span>
+      </div>
+    </div>
+    <div class="line"></div>
+    <p>{{ selectedBagItem?.details }}</p>
+    <button (click)="closeModal()">使用</button>
+  </div>
+</div>

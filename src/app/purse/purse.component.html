@@ -1,0 +1,32 @@
+<div class="purseContainer" *ngIf="authService.isLoggedIn">
+  <div class="purseContainer">
+    <div class="purse">
+      <div class="pursePic">
+        <img [src]="coinsUrls[0]" alt="Coin Image" />
+      </div>
+      <div class="purseTxt">
+        <span *ngIf="!isLoading; else loading">{{ firstBalance }}</span>
+        <ng-template #loading>
+          <span class="loadingTxt"></span>
+        </ng-template>
+      </div>
+      <div class="purseBuy">
+        <span (click)="goShopping()">+</span>
+      </div>
+    </div>
+    <div class="purse">
+      <div class="pursePic">
+        <img [src]="coinsUrls[1]" alt="Coin Image" />
+      </div>
+      <div class="purseTxt">
+        <span *ngIf="!isLoading; else loading">{{ secondBalance }}</span>
+        <ng-template #loading>
+          <span class="loadingTxt"></span>
+        </ng-template>
+      </div>
+      <div class="purseBuy">
+        <span (click)="goShopping()">+</span>
+      </div>
+    </div>
+  </div>
+</div>

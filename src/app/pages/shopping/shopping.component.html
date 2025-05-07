@@ -1,0 +1,173 @@
+<app-loading></app-loading>
+<!-- <app-loading [isLoading]="isLoading"></app-loading> -->
+<div *ngIf="!isLoading">
+  <app-header></app-header>
+  <app-marquee></app-marquee>
+  <app-nav-bar [logoUrl]="logoUrl"></app-nav-bar>
+
+  <app-game-info></app-game-info>
+  <app-game-list></app-game-list>
+  <div *ngIf="gameService.isGameList">
+    <app-game-list
+      [games]="favoriteList"
+      [favoriteList]="favoriteList"
+      [showRemoveButton]="false"
+      (removeFavoriteEvent)="gameService.removeFavorite($event)"
+    ></app-game-list>
+  </div>
+
+  <div class="storeContainer">
+    <div class="wheel">
+      <div
+        class="goods"
+        *ngFor="let category of categoryList"
+        [ngClass]="{ 'selected-category': selectedCategory === category }"
+        (click)="selectCategory(category)"
+      >
+        {{ CATEGORY_MAPPING[category] }}
+      </div>
+    </div>
+
+    <div class="wheelPic">
+      <img src="imgs/arc.png" alt="" />
+    </div>
+
+    <div class="cards">
+      <div
+        *ngFor="let item of filteredGoods"
+        (click)="showPurchase(item, selectedCategory)"
+        class="card"
+      >
+        <div class="cardPics">
+          <div class="cardPic">
+            <img [src]="item.imgUrl" alt="goods picture" />
+          </div>
+        </div>
+        <div class="cardTxt">
+          <h3>{{ item.show_name }}</h3>
+          <p>{{ item.main_title }}</p>
+          <p>{{ item.sub_title }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="instructionsBtnsContainer">
+      <div class="priceInstructionsBtn">
+        <img
+          src="imgs/whatPoin.png"
+          (click)="showPriceInstructions()"
+          alt="shopping cart icon"
+        />
+        <p>點數與熊熊幣各是什麼?</p>
+      </div>
+      <div class="buyInstructionsBtn">
+        <img
+          src="imgs/shoppingKnow.png"
+          (click)="showBuyInstructions()"
+          alt="question mark icon"
+        />
+        <p>購物須知</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 確認購買彈窗 -->
+<div class="overlay" *ngIf="this.isPurchase === true">
+  <div class="buyContainer" (click)="$event.stopPropagation()">
+    <span class="closeX" (click)="closeModal()">&times;</span>
+    <h2>提示</h2>
+    <div class="buyContent">
+      <p>確認{{ selectedItem.main_title }}?</p>
+    </div>
+    <button class="btn primary" (click)="confirmPurchase()">確認</button>
+  </div>
+</div>
+
+<!-- 點數與熊熊幣各是什麼彈窗 -->
+<div class="overlay" *ngIf="this.isPriceInstructions === true">
+  <div class="priceInstructionsContainer" (click)="$event.stopPropagation()">
+    <span class="closeX" (click)="closeModal()">&times;</span>
+    <div class="priceInstructionsContent">
+      <div class="priceInstructionsTitle">
+        <div class="rectanglePic">
+          <img src="imgs/rectangle97.png" alt="" />
+        </div>
+        <h2>點數</h2>
+      </div>
+      <div class="priceInstructionsContent">
+        <ul>
+          <li>於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員。</li>
+          <li>於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員。</li>
+          <li>於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員。</li>
+          <h5>使用規則</h5>
+          <li>於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員。</li>
+          <li>於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員。</li>
+          <h5>獲取方式</h5>
+          <li>
+            進入充值頁面<img
+              src="imgs/donate.png"
+              alt="donate icon"
+            />購買遊戲點數
+          </li>
+        </ul>
+      </div>
+      <div class="priceInstructionsTitle">
+        <div class="rectanglePic">
+          <img src="imgs/rectangle97.png" alt="" />
+        </div>
+        <h2>熊熊幣</h2>
+      </div>
+      <div class="priceInstructionsContent">
+        <ul>
+          <li>為遊戲中所使用的餘額,當餘額不足時請適當補充熊幣才可繼續遊戲。</li>
+          <li>於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員。</li>
+          <li>於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員。</li>
+          <h5>使用規則</h5>
+          <li>於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員。</li>
+          <li>於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員。</li>
+          <h5>獲取方式</h5>
+          <li>
+            進入熊熊商城<img src="imgs/gift.png" alt="store icon" />購買遊戲點數
+          </li>
+        </ul>
+      </div>
+      <div class="btnContainer">
+        <button class="btn primary" (click)="closeModal()">確認</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 購物須知彈窗 -->
+<div class="overlay" *ngIf="this.isBuyInstructions === true">
+  <div class="buyInstructionsContainer" (click)="$event.stopPropagation()">
+    <span class="closeX" (click)="closeModal()">&times;</span>
+
+    <div class="buyInstructionsTitle">
+      <div class="rectanglePic">
+        <img src="imgs/rectangle97.png" alt="" />
+      </div>
+      <h2>購物須知</h2>
+    </div>
+    <div class="buyInstructionsContent">
+      <ul>
+        <li>於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員。</li>
+        <li>
+          未來消費皆以同一會員帳號進行購物。成為品牌會員可以獲得品牌最新資訊與最新商品訊息。
+        </li>
+        <li>
+          於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員，未來消費皆以同一會員帳號進行購物。成為品牌會員可以獲得品牌最新資訊與最新商品訊息。於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員，未來消費皆以同一會員帳號進行購物。成為品牌會員可以獲得品牌最新資訊與最新商品訊息。
+        </li>
+        <li>
+          於MOTHERHOUSE網路商店購物消費，可以選擇註冊成為會員，未來消費皆以同一會員帳號進行購物。成為品牌會員可以獲得品牌最新資訊與最新商品訊息。
+        </li>
+      </ul>
+    </div>
+    <button class="btn primary" (click)="closeModal()">確認</button>
+  </div>
+</div>
+
+<app-egg></app-egg>
+<app-online-bonus></app-online-bonus>
+<app-purse></app-purse>
+<app-copyright></app-copyright>

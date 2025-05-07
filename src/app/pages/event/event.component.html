@@ -1,0 +1,94 @@
+<app-header></app-header>
+<app-marquee></app-marquee>
+<app-nav-bar></app-nav-bar>
+<app-event-list></app-event-list>
+
+<!-- 已完成任務 -->
+<div class="taskContainer">
+  <div class="finishedTaskContainer">
+    <div class="finishedTaskContent">
+      <div class="titleContainer">
+        <div class="rectanglePic">
+          <img src="imgs/rectangle97.png" alt="" />
+        </div>
+        <h2>任務列表</h2>
+      </div>
+      <div class="taskItemContainer">
+        <div
+          class="taskItem"
+          *ngFor="let task of taskList"
+          [ngClass]="{ 'fade-out': isFading, 'fade-in': !isFading }"
+        >
+          <button [ngClass]="getBtnClass(task)" (click)="fetchTaskGet(task)">
+            領取
+          </button>
+          <p>{{ task.text }}</p>
+          <div class="taskItemImg" *ngFor="let gift of task.giftList">
+            <p>{{ gift.itemName }}</p>
+          </div>
+          <!-- <div class="taskItemImg" *ngIf="task.hasImg">
+            <div class="imgContainer">
+              <img src="imgs/vegetableS.png" alt="vegetable icon" />
+            </div>
+            <div class="imgContainerSpace"></div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <div class="btnContainer">
+      <button
+        *ngFor="let btn of btns; let i = index"
+        [class.active]="btn === selectedBtn"
+        (click)="fetchTask(i.toString())"
+      >
+        {{ btn }}
+      </button>
+    </div>
+  </div>
+  <!-- 領取紀錄 -->
+  <div class="recordContainer">
+    <div class="titleContainer">
+      <div class="rectanglePic">
+        <img src="imgs/rectangle97.png" alt="" />
+      </div>
+      <h2>領取紀錄</h2>
+    </div>
+    <div class="recordContent">
+      <div class="timeRecord">
+        <h3>領取時間</h3>
+        <div class="txtContainer" *ngFor="let record of recordList">
+          <p>{{ record.date }}</p>
+        </div>
+      </div>
+      <div class="eventNameRecord">
+        <h3>活動名稱</h3>
+        <div class="txtContainer" *ngFor="let record of recordList">
+          <p>{{ record.mainText }}</p>
+        </div>
+      </div>
+      <div class="prizeRecord">
+        <h3>獎勵</h3>
+        <div class="txtContainer" *ngFor="let record of recordList">
+          <p>{{ record.giftText }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 已完成任務 領取彈窗 -->
+<div
+  class="overlay"
+  *ngIf="isModalVisible['isTaskGet']"
+  (click)="closeModal('isTaskGet')"
+>
+  <div class="taskGetContainer" (click)="$event.stopPropagation()">
+    <span class="closeX" (click)="closeModal('isTaskGet')">&times;</span>
+    <h2>提示</h2>
+    <p>完成任務領取{{ selectedGiftNames }}</p>
+    <button class="btn primary" (click)="closeModal('isTaskGet')">確認</button>
+  </div>
+</div>
+
+<app-purse></app-purse>
+<app-copyright></app-copyright>

@@ -1,0 +1,70 @@
+<!-- 初始狀態僅顯示 img -->
+<div class="massangeWrapper" *ngIf="!isExpanded" (click)="toggleContainer()">
+  <img
+    src="imgs/massange.png"
+    [class.bounce]="triggerBounce"
+    alt="messange icon"
+  />
+  <span class="newMassange" *ngIf="isNewMassange"></span>
+</div>
+
+<!-- 展開後顯示 messangeContainer -->
+<div class="massangeContainer" *ngIf="isExpanded">
+  <img
+    src="imgs/massange.png"
+    (click)="toggleContainer()"
+    alt="messange icon"
+  />
+  <div class="line"></div>
+  <div class="circle"></div>
+  <div class="line"></div>
+  <div class="playerPic" (click)="toggleDialog($event, 'Player 1 details')">
+    <span class="innerNewMassange" *ngIf="isInnerNewMassange"></span>
+  </div>
+  <div class="line"></div>
+  <div class="circle"></div>
+  <div class="line"></div>
+  <div
+    class="playerPic"
+    (click)="toggleDialog($event, 'Player 2 details')"
+  ></div>
+  <div class="line"></div>
+  <div class="circle"></div>
+  <div class="line"></div>
+  <div
+    class="playerPic"
+    (click)="toggleDialog($event, 'Player 3 details')"
+  ></div>
+</div>
+
+<!-- Dialog -->
+<div
+  class="dialogBox"
+  *ngIf="isDialog"
+  [ngStyle]="{ top: dialogPosition.y + 'px', left: dialogPosition.x + 'px' }"
+>
+  <!-- {{ dialogContent }} -->
+
+  <div class="BoxContentWrap">
+    <div class="BoxContentPicContainer">
+      <div class="BoxContentPic">
+        <span class="onlineStatus"></span>
+      </div>
+      <p>Name</p>
+    </div>
+    <div class="BoxContentTxt">
+      <div class="friendTxt">
+        <p>HELLO WORLD!!!HELLO WORLD!!!HELLO WORLD!!!</p>
+        <span>13:08</span>
+      </div>
+      <div class="myselfTxt">
+        <p>HELLO WORLD!!!HELLO WORLD!!!HELLO WORLD!!!</p>
+        <span>13:08</span>
+      </div>
+    </div>
+  </div>
+  <div class="inputContainer">
+    <input type="text" />
+    <img src="imgs/send.png" alt="send massange icon" />
+  </div>
+</div>

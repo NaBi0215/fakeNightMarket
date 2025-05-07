@@ -1,0 +1,213 @@
+:host {
+  display: block;
+  background-color: #344162;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.mainTitle {
+  position: absolute;
+  top: 8%;
+  left: 46%;
+  h2 {
+    color: #52f9ff;
+    font-size: 3rem;
+  }
+}
+
+.btnContainer {
+  position: relative;
+  height: 100vh;
+  .into {
+    display: inline-block;
+    position: absolute;
+    bottom: 40%;
+    right: 45.5%;
+    background: #395293d9;
+    color: #b9ccda;
+    border: 2px solid #b9ccda;
+    padding: 10px 20px;
+    font-size: 2rem;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px black;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+    }
+  }
+  .login {
+    position: absolute;
+    top: 77%;
+    left: 35%;
+    background: #395293d9;
+    color: #b9ccda;
+    border: 2px solid #b9ccda;
+    padding: 10px 50px;
+    font-size: 2rem;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px black;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+    }
+  }
+  .register {
+    position: absolute;
+    top: 77%;
+    right: 35%;
+    background: #395293d9;
+    color: #b9ccda;
+    border: 2px solid #b9ccda;
+    padding: 10px 50px;
+    font-size: 2rem;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px black;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+.logInHidden {
+  display: none !important;
+}
+
+.reguisterGiftContainer {
+  background-color: #b9ccda;
+  padding-bottom: 2%;
+
+  .reguisterGiftTitle {
+    text-align: center;
+    h2 {
+      color: #ffffff;
+      font-size: 64px;
+      margin: 0;
+      padding-top: 2%;
+      text-shadow: -2px -2px 0 #488c95, 2px -2px 0 #488c95, -2px 2px 0 #488c95,
+        2px 2px 0 #488c95;
+    }
+    h3 {
+      font-size: 2.5rem;
+      color: #395293d9;
+      text-shadow: 3px 3px 3px #00000041;
+    }
+  }
+}
+.stepCirclePic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+.stepTxtContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1%;
+  gap: 230px;
+  .stepTxtPic {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .stepNumber {
+      padding-bottom: 5%;
+      color: #395293d9;
+      font-size: 64px;
+      text-shadow: -3px -3px 0 #ffffff, 3px -3px 0 #ffffff, -3px 3px 0 #ffffff,
+        3px 3px 0 #ffffff;
+    }
+  }
+}
+
+.activityInfoContainer {
+  text-align: center;
+  padding: 2% 0px;
+  background-color: #fff;
+  .activitySubTitle h3 {
+    font-size: 2.5rem;
+    color: #395293d9;
+    text-shadow: 3px 3px 3px #00000041;
+  }
+  .activityInfoContextContainer {
+    display: flex;
+    align-items: center;
+    padding-left: 7%;
+    gap: 3%;
+    .mainInfoContext {
+      width: 800px;
+      height: 440px;
+      border: 4.5px solid #488c95;
+      background-color: #b9ccda;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+      align-items: center;
+      .mainInfoTitle {
+        background-color: #395293d9;
+        padding: 2% 0px;
+        width: 100%;
+        text-align: center;
+        border-radius: 0px 0px 12px 12px;
+        h3 {
+          margin: 0;
+          color: #ffffff;
+          font-size: 2.5rem;
+        }
+      }
+    }
+    .activityInfoContextWrap {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      .subInfoContext {
+        display: flex;
+        width: 520px;
+        height: auto;
+        border: 4.5px solid #488c95;
+        background-color: #b9ccda;
+        border-radius: 16px;
+        padding: 3%;
+        text-align: center;
+        .subInfoContextTxt {
+          padding-left: 5%;
+          padding-top: 10%;
+          color: #585858;
+          h4,
+          h5 {
+            margin: 0;
+          }
+          h4 {
+            font-size: 1.5rem;
+            padding-bottom: 20%;
+          }
+          h5 {
+            font-size: 1.5rem;
+          }
+        }
+      }
+    }
+  }
+  .carouselContainer {
+    .TitleFontPic {
+      margin: 3% 0px;
+      h2 {
+        color: #ffffff;
+        font-size: 64px;
+        margin: 0;
+        text-shadow: -2px -2px 0 #488c95, 2px -2px 0 #488c95, -2px 2px 0 #488c95,
+          2px 2px 0 #488c95;
+      }
+    }
+    .carouselContent {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,0 +1,221 @@
+<app-header></app-header>
+<app-nav-bar></app-nav-bar>
+
+<div class="container">
+  <div class="infoSection">
+    <div
+      class="infoBlock"
+      [class.selected]="selectedInfo === 'game'"
+      (click)="selectInfo('game')"
+    >
+      <h2>遊戲紀錄資訊</h2>
+      <table class="infoTable">
+        <thead>
+          <tr>
+            <th>月份</th>
+            <th>投注額</th>
+            <th>勝/負</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr *ngFor="let game of gamePreview">
+            <td>{{ game.month }}</td>
+            <td>${{ game.betTotal }}</td>
+            <td>{{ game.winRate }}</td>
+          </tr> -->
+          <tr>
+            <td>9月</td>
+            <td>$890065</td>
+            <td>65%</td>
+          </tr>
+          <tr>
+            <td>10月</td>
+            <td>$965065</td>
+            <td>80%</td>
+          </tr>
+          <tr>
+            <td>11月</td>
+            <td>$786065</td>
+            <td>45%</td>
+          </tr>
+          <tr>
+            <td>12月</td>
+            <td>$423255</td>
+            <td>25%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="infoBlock" [class.selected]="selectedInfo === 'rechange'">
+      <!-- <div
+      class="infoBlock"
+      [class.selected]="selectedInfo === 'rechange'"
+      (click)="selectInfo('rechange')"
+    > -->
+      <h2>商城購買紀錄資訊</h2>
+      <table class="infoTable">
+        <thead>
+          <tr>
+            <th>月份</th>
+            <th>存款</th>
+            <th>取款</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr *ngFor="let game of withdrawPreview">
+            <td>{{ game.month }}</td>
+            <td>{{ game.withdrawTotal }}</td>
+            <td>{{ game.winTotal }}</td>
+          </tr> -->
+          <tr>
+            <td>9月份</td>
+            <td>$62000</td>
+            <td>95000</td>
+          </tr>
+          <tr>
+            <td>10月份</td>
+            <td>$200000</td>
+            <td>600000</td>
+          </tr>
+          <tr>
+            <td>11月份</td>
+            <td>$45000</td>
+            <td>20000</td>
+          </tr>
+          <tr>
+            <td>12月份</td>
+            <td>$62000</td>
+            <td>5000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 詳細遊戲紀錄 -->
+  <div class="detailSection" *ngIf="selectedInfo === 'game'">
+    <div class="detailSectionTitle">
+      <div class="detailSectionPic">
+        <img src="imgs/rectangle97.png" alt="" />
+      </div>
+      <h3>詳細遊戲紀錄</h3>
+    </div>
+    <div class="dateRange">
+      <!-- <input type="datetime-local" [(ngModel)]="selectedDate" /> -->
+      <input
+        type="month"
+        [(ngModel)]="selectedDate"
+        (change)="gameRecordDetail()"
+      />
+    </div>
+    <table class="detailTable">
+      <thead>
+        <tr>
+          <th>日期</th>
+          <th>遊戲名稱</th>
+          <th>投注金額</th>
+          <th>出款門檻扣除值</th>
+          <th>勝/負</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let game of gameRecord">
+          <td>{{ game.date }}</td>
+          <td>{{ game.gameCode }}</td>
+          <td>{{ game.betAmount }}</td>
+          <!-- <td>$50</td> -->
+          <td>{{ game.winLose }}</td>
+        </tr>
+      </tbody>
+      <tr>
+        <td>2010/09/03</td>
+        <td>呆瓜派對</td>
+        <td>$1000</td>
+        <td>$50</td>
+        <td>勝</td>
+      </tr>
+      <tr>
+        <td>2010/09/03</td>
+        <td>呆瓜派對</td>
+        <td>$3000</td>
+        <td>$50</td>
+        <td>敗</td>
+      </tr>
+      <tr>
+        <td>2010/09/03</td>
+        <td>呆瓜派對</td>
+        <td>$1000</td>
+        <td>$50</td>
+        <td>勝</td>
+      </tr>
+      <tr>
+        <td>2010/09/03</td>
+        <td>呆瓜派對</td>
+        <td>$1000</td>
+        <td>$50</td>
+        <td>勝</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 充值紀錄區塊 -->
+  <div class="detailSection" *ngIf="selectedInfo === 'rechange'">
+    <div class="detailSectionTitle">
+      <div class="detailSectionPic">
+        <img src="imgs/rectangle97.png" alt="" />
+      </div>
+      <h3>詳細充值紀錄</h3>
+    </div>
+    <div class="dateRange">
+      <input type="datetime-local" name="" id="" />
+    </div>
+    <table class="detailTable">
+      <tr>
+        <th>日期</th>
+        <th>OCOIN</th>
+        <th>支付方式</th>
+        <th>編號</th>
+        <th>狀態</th>
+      </tr>
+      <tr>
+        <td>2010 / 09 / 03</td>
+        <td>$6800</td>
+        <td>信用卡</td>
+        <td>UYC45564</td>
+        <td>審核中</td>
+      </tr>
+      <tr>
+        <td>2010 / 09 / 03</td>
+        <td>$6800</td>
+        <td>信用卡</td>
+        <td>UYC45564</td>
+        <td>已完成</td>
+      </tr>
+      <tr>
+        <td>2010 / 09 / 03</td>
+        <td>$6800</td>
+        <td>信用卡</td>
+        <td>UYC45564</td>
+        <td>已完成</td>
+      </tr>
+      <tr>
+        <td>2010 / 09 / 03</td>
+        <td>$6800</td>
+        <td>信用卡</td>
+        <td>UYC45564</td>
+        <td>已完成</td>
+      </tr>
+      <tr>
+        <td>2010 / 09 / 03</td>
+        <td>$6800</td>
+        <td>信用卡</td>
+        <td>UYC45564</td>
+        <td>已完成</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<app-purse></app-purse>
+<app-copyright></app-copyright>

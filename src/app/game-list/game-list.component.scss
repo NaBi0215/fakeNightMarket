@@ -1,0 +1,75 @@
+.recordFavoriteContainer {
+  position: fixed;
+  z-index: 3;
+  top: 40%;
+  right: 1%;
+  background-color: #395293d9;
+  border-radius: 8px;
+  padding: 0px 1%;
+  padding-bottom: 1%;
+  width: 260px;
+  height: 240px;
+  .favoriteList {
+    padding: 1%;
+    border-radius: 10px;
+  }
+  .favoriteListTitle {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #d9d9d9;
+    width: 100%;
+    margin: 1% auto;
+    .favoriteListTitlePic {
+      max-width: 100%;
+      margin-right: 5%;
+      .favoriteListTitlePic img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+    h3 {
+      font-size: 1rem;
+      font-weight: bold;
+      color: #d9d9d9;
+      margin: 0;
+    }
+  }
+  // 撐空間而已
+  .activityInfoContent {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    gap: 10px;
+    max-width: 100%;
+    img {
+      width: 100%;
+      height: auto;
+      display: inline-block;
+    }
+  }
+  // 我的最愛遊戲內部
+  .favoriteListTxt {
+    display: flex;
+    gap: 5%;
+    padding: 2% 5%;
+    .favoriteWrap {
+      position: relative;
+    }
+    .favoriteCloseX {
+      position: absolute;
+      cursor: pointer;
+      top: -8px;
+      right: -3px;
+      color: #ffffff;
+    }
+    .favoritePic {
+      max-width: 15%;
+      img {
+        width: 100%;
+        display: block;
+        height: auto;
+      }
+    }
+  }
+}

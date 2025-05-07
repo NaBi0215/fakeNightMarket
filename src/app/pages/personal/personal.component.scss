@@ -1,0 +1,502 @@
+:host {
+  display: block;
+  height: 100vh;
+  background-image: url("https://multi-cdn.cg11pro.com/resource/prism/front/gameLobby/background/nightMarket/banner03.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding-bottom: 200px;
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  padding-left: 8%;
+  h2 {
+    font-size: 2rem;
+    margin: 0;
+    padding-left: 1%;
+    color: #ffffff;
+  }
+}
+.personalContainer {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  width: 72%;
+  height: 90%;
+  background: #2a365e99;
+  border-radius: 20px;
+  margin-top: 1%;
+  margin-left: 15%;
+  box-shadow: 0px 4px 80px #ccb680e5;
+  animation: fadeInUp 1s ease forwards;
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .personal {
+    display: flex;
+    padding-top: 1%;
+    padding-left: 3%;
+    .personalPicContainer {
+      margin-left: 10px;
+      .personalPic {
+        max-width: 100%;
+        flex: 1;
+
+        cursor: pointer;
+        position: relative;
+
+        &:hover::after {
+          position: absolute;
+          bottom: 145px;
+          left: 45px;
+          content: "點我換大頭照 ก็ʕ•͡ᴥ•ʔ ก้";
+          color: #ffffff;
+          background-color: #2a365e99;
+          border-radius: 15px;
+          padding: 1% 3%;
+          font-size: 1.2rem;
+        }
+
+        &.has_img::after {
+          content: none;
+        }
+
+        img {
+          width: 300px;
+          height: 300px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+      .personalPicTxt {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        p {
+          font-size: 1.5rem;
+        }
+        button {
+          padding: 1.5% 3%;
+          background-color: #395293;
+          border: 2px solid #b9ccda;
+          color: #b9ccda;
+          border-radius: 8px;
+          cursor: pointer;
+          &:hover {
+            background-color: #192545d9;
+          }
+        }
+      }
+    }
+
+    .personalTxt {
+      display: flex;
+      flex-direction: column;
+      flex: 2;
+      margin: 0px 10%;
+      .name,
+      .gender,
+      .birthday,
+      .level,
+      .exp {
+        display: flex;
+        color: #ffffff;
+        input[type="text"] {
+          background-color: transparent;
+          border: none;
+          font-size: 1.5rem;
+          color: #ffffff;
+          text-align: center;
+          letter-spacing: 2px;
+        }
+        input[type="date"] {
+          background-color: transparent;
+          border: none;
+          font-size: 1.5rem;
+          color: #ffffff;
+        }
+        h3,
+        p {
+          font-size: 1.5rem;
+          letter-spacing: 5px;
+        }
+      }
+      .name {
+        input {
+          width: 280px;
+          margin-left: 15%;
+          // outline: 1px solid forestgreen;
+        }
+      }
+      .gender {
+        color: #ffffff;
+        display: inline-flex;
+        align-items: center;
+        .genderClass {
+          text-align: center;
+          width: 200px;
+          // outline: 1px solid forestgreen;
+          margin-left: 20%;
+          span {
+            font-size: 1.5rem;
+            padding: 0px 5%;
+          }
+          label {
+            color: #ffffff59;
+            font-size: 1.5rem;
+            cursor: pointer;
+          }
+          input[type="radio"] {
+            display: none;
+          }
+          input[type="radio"]:checked + .genderOption {
+            color: #ffffff;
+          }
+        }
+      }
+      .birthday h3 {
+        // outline: 1px solid gold;
+      }
+      .birthday input {
+        width: 200px;
+        margin-left: 10%;
+        // outline: 1px solid forestgreen;
+      }
+      .level p {
+        width: 200px;
+        margin-left: 20%;
+        text-align: center;
+        // outline: 1px solid forestgreen;
+      }
+      .exp {
+        display: flex;
+        align-items: center;
+        .expBar {
+          width: 280px;
+          // outline: 1px solid forestgreen;
+          height: 25px;
+          background-color: transparent;
+          border: 1.5px solid #ffffff;
+          margin-left: 12%;
+        }
+        p {
+          padding-left: 1%;
+        }
+      }
+    }
+  }
+  .personalInfo {
+    .personalInfoTitle {
+      display: flex;
+      padding-top: 3%;
+      h2 {
+        font-size: 2rem;
+        margin: 0;
+        padding-left: 1%;
+      }
+    }
+  }
+}
+.storedBtn {
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  border-top: 1px solid #ffffff;
+  width: 90%;
+  margin: 1% auto;
+}
+
+.personalInfoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 8%;
+  .validInfo {
+    nav {
+      li {
+        position: relative;
+        margin-left: 20px;
+        .flexItem {
+          display: flex;
+          padding-bottom: 5%;
+          align-items: center;
+          flex: 1;
+          letter-spacing: 2px;
+          margin-top: 3%;
+          h3 {
+            font-size: 1.6rem;
+            margin: 0;
+          }
+          p {
+            font-size: 1.6rem;
+            align-items: center;
+            margin: 0;
+            margin-left: 100px;
+          }
+          .greenHighLight {
+            color: #75f94c;
+          }
+        }
+        .passwordPic {
+          max-width: 100%;
+          position: absolute;
+          left: -25px;
+          img {
+            width: 100%;
+            height: auto;
+            display: inline-block;
+          }
+        }
+        .revisePic,
+        .validPic {
+          padding-left: 5px;
+          img {
+            vertical-align: middle;
+          }
+        }
+        .revisePic img {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .recommendCode {
+    padding-right: 100px;
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+    text-align: center;
+    h3,
+    p {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+    h3 {
+      position: absolute;
+      left: -200px;
+      bottom: 240px;
+    }
+    .codeContainer {
+      display: flex;
+      align-items: center;
+      gap: 3%;
+      img {
+        cursor: pointer;
+      }
+    }
+    .tooltip {
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #2a365d;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .tooltip.show {
+      opacity: 1;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  .revisePasswordContainer,
+  .revisePhoneContainer {
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    width: 750px;
+    padding-bottom: 2%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    border: 3px solid #b9ccda;
+    border-radius: 35px;
+    background: #395293d9;
+    position: fixed;
+    z-index: 10;
+    h2 {
+      color: #ffffff;
+      font-size: 2.5rem;
+    }
+    p {
+      color: #488c95;
+      font-size: 1.2rem;
+    }
+  }
+  .revisePhoneContainer h2 {
+    margin-bottom: 0;
+  }
+}
+
+.revisePasswordInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  color: #ffffff;
+  font-size: 2rem;
+  .passwordOld,
+  .passwordNew,
+  .passwordNewCheck {
+    label {
+      padding-right: 8%;
+    }
+    input {
+      border: 2px solid #488c95;
+      background-color: #b9ccda;
+      border-radius: 15px;
+      width: 450px;
+      height: 50px;
+      font-size: 1.2rem;
+      color: #5d98b1;
+      letter-spacing: 1.5px;
+      padding-left: 1%;
+      &::placeholder {
+        color: #5d98b1;
+      }
+    }
+  }
+  .passwordNewCheck label {
+    padding-right: 4%;
+  }
+
+  .btnContainer_rv {
+    .forgotLogout {
+      display: flex;
+    }
+    a {
+      color: #b9ccda;
+      font-size: 1.3rem;
+      margin-left: auto;
+      padding-right: 8%;
+      cursor: pointer;
+    }
+    button {
+      background: #395293d9;
+      color: #b9ccda;
+      border: 2px solid #b9ccda;
+      padding: 10px 20px;
+      font-size: 2rem;
+      border-radius: 15px;
+      cursor: pointer;
+      box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.322);
+      &:hover {
+        background-color: #361c0dbf;
+        transition: 0.5s;
+      }
+    }
+  }
+}
+
+.revisePhoneInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  // gap: 55px;
+  color: #ffffff;
+  font-size: 2rem;
+  .phone,
+  .captcha {
+    label {
+      padding-right: 8%;
+    }
+    input {
+      border: 2px solid #488c95;
+      background-color: #b9ccda;
+      border-radius: 15px;
+      width: 450px;
+      height: 50px;
+      font-size: 1.2rem;
+      color: #5d98b1;
+      letter-spacing: 1.5px;
+      padding-left: 1%;
+      &::placeholder {
+        color: #5d98b1;
+      }
+    }
+  }
+  .phone {
+    padding-bottom: 0;
+    position: relative;
+    .countryCode {
+      position: absolute;
+      top: 15%;
+      left: 29%;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+    }
+    input {
+      text-indent: 20%;
+    }
+    .capchaBtnContainer {
+      display: flex;
+      justify-content: flex-end;
+      margin-right: 10%;
+      margin-top: 1%;
+      gap: 1%;
+      button {
+        padding: 1%;
+        font-size: 1rem;
+        border: 1px solid #488c95;
+        border-radius: 8px;
+        background-color: #395293d9;
+        color: #4fb0bd;
+        cursor: pointer;
+        &:disabled {
+          background-color: #ccc;
+          color: #494949;
+          cursor: not-allowed;
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+  .captcha {
+    position: relative;
+    label {
+      padding-right: 4%;
+    }
+    .rv_countdown {
+      position: absolute;
+      top: 30%;
+      right: 12%;
+      font-size: 1.2rem;
+      color: #ff0000;
+    }
+  }
+  .btnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // position: relative;
+  }
+}

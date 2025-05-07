@@ -1,0 +1,814 @@
+.navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background-color: #dddddd;
+  z-index: 2;
+  padding: 1%;
+  .allPic {
+    max-width: 100%;
+    padding-bottom: 30px;
+    .allPic img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+  .setPic {
+    position: absolute;
+    bottom: 50px;
+  }
+  .othersPic {
+    img {
+      &:hover,
+      &.selected {
+        background-color: #ffffffd9;
+        box-shadow: 0 0 0 8px #ffffffd9;
+        border-radius: 5px;
+      }
+    }
+    a {
+      position: relative;
+    }
+    .redDot {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 10px;
+      height: 10px;
+      background-color: rgba(255, 0, 0, 0.664);
+      border-radius: 50%;
+    }
+  }
+  .allPic,
+  .othersPic,
+  .setPic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 17px;
+    cursor: pointer;
+    img {
+      display: block;
+    }
+  }
+}
+
+.offcanvas {
+  position: fixed;
+  top: 0;
+  left: -50%;
+  width: 300px;
+  height: 100%;
+  background-color: #395293;
+  transition: left 0.3s ease;
+  z-index: 1;
+  .offcanvasHeader {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3%;
+    padding-top: 5%;
+    margin: 7%;
+    .mySelfPic {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 2px solid #488c95;
+      background-color: #fff;
+    }
+    .mySelfTxt {
+      display: flex;
+      flex-direction: column;
+      align-items: self-start;
+      justify-content: center;
+      gap: 5%;
+      p {
+        color: #b9ccda;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+        margin: 0;
+      }
+    }
+  }
+  .lineFriendContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    span {
+      color: #d9d9d9;
+      font-size: 0.8rem;
+      padding-right: 10px;
+    }
+    .lineFriend {
+      width: 70%;
+      height: 2px;
+      background-color: #d9d9d9;
+    }
+  }
+  .offcanvasBody {
+    margin: 6%;
+    height: 240px;
+    .friendContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      &.offline {
+        opacity: 0.5;
+      }
+      .friendPic {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid #488c95;
+        background-color: #fff;
+        position: relative;
+        .redFrame {
+          position: absolute;
+          top: -13px;
+          left: -8px;
+        }
+        .battleFrame {
+          position: absolute;
+          top: -13px;
+          left: -8px;
+        }
+      }
+      .friendTxtContainer {
+        min-width: 150px;
+        .friendName p {
+          color: #b9ccda;
+          font-size: 0.8rem;
+          letter-spacing: 1px;
+          margin: 0;
+        }
+        .friendTitle {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 3%;
+          .volumePic {
+            width: 20px;
+            height: 20px;
+          }
+          .volume {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .friendIcon {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      .battle {
+        cursor: pointer;
+      }
+    }
+  }
+  .offcanvasBodyNearby {
+    height: 450px;
+  }
+}
+.offcanvas.show {
+  left: 3.5%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  .contactContainer,
+  .qaContainer,
+  .languageContainer,
+  .logOutContainer,
+  .battleContainer,
+  .WhackAMoleContainer {
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    width: 750px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    border: 3px solid #b9ccda;
+    border-radius: 35px;
+    background: #395293d9;
+    position: fixed;
+    z-index: 10;
+    h2 {
+      color: #ffffff;
+      font-size: 2.5rem;
+    }
+  }
+  .logOutContainer {
+    width: 650px;
+    color: #ffffff;
+    p {
+      font-size: 2rem;
+      padding: 3% 0px;
+      letter-spacing: 0.5px;
+    }
+    button {
+      margin-bottom: 3%;
+    }
+  }
+  .languageContainer {
+    width: 800px;
+    .languagePicContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5%;
+      max-width: 100%;
+      .languageItem h5 {
+        margin: 0;
+        margin-top: 10px;
+        color: #ffffff;
+        font-size: 1.5rem;
+      }
+      .langPic {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+    button {
+      margin: 3% 0px;
+    }
+  }
+  .battleContainer {
+    p {
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 2.5rem;
+      padding: 3% 0px;
+      letter-spacing: 0.5px;
+    }
+    button {
+      margin-bottom: 5%;
+    }
+  }
+}
+.qaContainer {
+  .serviceAreaQ {
+    display: flex;
+    justify-content: flex-start;
+    margin: 2% 4%;
+    margin-top: 5%;
+    gap: 5%;
+    .service {
+      color: #ffffff;
+      p {
+        margin: 0;
+      }
+    }
+    .serviceTxt {
+      background-color: #b9ccda;
+      border-radius: 15px;
+      color: #395293d9;
+      text-align: left;
+      padding: 0px 2%;
+      padding-bottom: 2%;
+      a {
+        display: block;
+        padding-bottom: 2%;
+        color: #354a81;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+          text-underline-offset: 5px;
+        }
+        &.selected {
+          text-decoration: underline;
+          text-underline-offset: 5px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .userArea {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2%;
+    .userTxt {
+      background-color: #b9ccda;
+      border-radius: 15px;
+      color: #354a81;
+      margin-right: 5%;
+      padding: 0px 2%;
+      text-align: left;
+    }
+  }
+  .serviceAreaA {
+    display: flex;
+    justify-content: flex-start;
+    margin: 2% 4%;
+    margin-bottom: 5%;
+    gap: 5%;
+    .service {
+      color: #ffffff;
+      p {
+        margin: 0;
+      }
+    }
+    .serviceTxt {
+      background-color: #b9ccda;
+      border-radius: 15px;
+      color: #354a81;
+      text-align: left;
+      padding: 0px 2%;
+      padding-bottom: 2%;
+    }
+  }
+}
+.contactContainer {
+  .contactPicContainer {
+    padding: 0px 15% 10% 15%;
+    max-width: 100%;
+    img {
+      width: 100%;
+      height: auto;
+      display: inline-block;
+    }
+  }
+}
+.mailContainer {
+  text-align: center;
+  top: 50%;
+  left: 23.5%;
+  transform: translate(-50%, -50%);
+  width: 750px;
+  height: 750px;
+  border: 3px solid #b9ccda;
+  border-radius: 35px;
+  background: #395293ea;
+  position: relative;
+  margin-right: 20px;
+  z-index: 10;
+  h2 {
+    color: #ffffff;
+    font-size: 2.5rem;
+  }
+  .mailContent {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 550px;
+    .mailItem {
+      display: flex;
+      justify-content: space-between;
+      background-color: #2a365e80;
+      min-height: 57px;
+      padding: 4% 2%;
+      margin: 0px 8%;
+      align-items: center;
+      border-radius: 8px;
+      cursor: pointer;
+      &.readItem {
+        background-color: rgba(0, 0, 0, 0.288);
+        color: #aaa;
+        pointer-events: none;
+        .giftRemainContainer,
+        .mailItemTitle {
+          opacity: 0.5;
+        }
+        .mailItemTitle .stateIcon {
+          background-color: #535353;
+        }
+      }
+      .mailItemTitle {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        h5 {
+          color: #d8b252;
+          font-size: 1.5rem;
+          margin: 0;
+        }
+        p {
+          color: #ffffff;
+          font-size: 1.3rem;
+          margin: 0;
+        }
+        .stateIcon {
+          width: 20px;
+          height: 20px;
+          background-color: #34a60b;
+        }
+      }
+      .giftRemainContainer {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        .giftRemainPic {
+          max-width: 100%;
+          img {
+            width: 100%;
+            height: auto;
+            display: inline-block;
+          }
+        }
+        p {
+          color: #ff0000;
+          font-size: 1.2rem;
+          margin: 0;
+          width: 100px;
+        }
+      }
+    }
+  }
+  .btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0px 5%;
+    button {
+      margin: 2%;
+      align-items: center;
+      width: 150px;
+      height: 50px;
+      padding: 0;
+      font-size: 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.322);
+      background-color: #b9ccda;
+      color: #ffffff;
+      &:hover {
+        background-color: #575c6f;
+        border: none;
+      }
+    }
+  }
+}
+.subMailContainer {
+  text-align: center;
+  bottom: 32.5%;
+  left: 63.5%;
+  transform: translate(-50%, -50%);
+  width: 750px;
+  height: 750px;
+  border-radius: 35px;
+  background: #2a365ee3;
+  position: relative;
+  margin-right: 20px;
+  z-index: 10;
+  .subMailContainerTitle {
+    text-align: left;
+    background-color: #ddddddd9;
+    border-radius: 30px 30px 0px 0px;
+    padding: 1.5% 2%;
+    .closeX {
+      background-color: #488c95;
+    }
+    h2 {
+      color: #488c95;
+      font-size: 2rem;
+      font-weight: normal;
+      margin: 0;
+    }
+  }
+  .subMailContent {
+    text-align: center;
+
+    .subMailTxtContent {
+      height: 350px;
+      h3 {
+        color: #d8b252;
+        font-size: 2rem;
+      }
+      h4 {
+        color: #ffffff;
+        font-size: 1.5rem;
+        font-weight: normal;
+      }
+      p {
+        color: #b9ccda;
+        font-size: 1.2rem;
+        text-align: left;
+        padding: 0px 10%;
+        letter-spacing: 1px;
+        line-height: 1.5;
+      }
+    }
+    .friendTxtContent {
+      height: 490px;
+    }
+  }
+  .subMailRemain p {
+    color: #c12929;
+    text-align: right;
+    padding: 1% 2%;
+  }
+  .giftGetContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ddddddd9;
+    .giftGetPic {
+      display: flex;
+      .giftItem {
+        width: 100px;
+        height: 100px;
+        background-color: #ffffff99;
+        border: 3px solid #2a365ecc;
+        border-radius: 8px;
+        margin: 10px;
+      }
+    }
+    .giftGetBtn {
+      padding: 0px 5%;
+      button {
+        align-items: center;
+        width: 150px;
+        height: 50px;
+        padding: 0;
+        font-size: 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.322);
+        background-color: #b9ccda;
+        color: #ffffff;
+        &:hover {
+          background-color: #575c6f;
+          border: none;
+        }
+      }
+    }
+  }
+  .subBtnContainer {
+    margin: 5% 0px;
+    button {
+      align-items: center;
+      width: 150px;
+      height: 50px;
+      padding: 0;
+      font-size: 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.322);
+      background-color: #b9ccda;
+      color: #ffffff;
+      &:hover {
+        background-color: #575c6f;
+        border: none;
+      }
+    }
+  }
+  .giftTradeContainer {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ddddddd9;
+    .giftTradePic {
+      display: flex;
+      align-items: center;
+      .giftItem {
+        width: 100px;
+        height: 100px;
+        background-color: #ffffff99;
+        border: 3px solid #2a365ecc;
+        border-radius: 8px;
+        margin: 10px;
+        position: relative;
+        .giftItemCount1 {
+          position: absolute;
+          bottom: 5px;
+          right: 5px;
+          color: #488c95;
+          font-size: 1.2rem;
+        }
+        .giftItemCount2 {
+          position: absolute;
+          bottom: 5px;
+          right: 5px;
+          color: #ff0000;
+          font-size: 1.2rem;
+        }
+      }
+      p {
+        color: #363636;
+        font-size: 3rem;
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+    .giftTradeBtn {
+      margin: 0px 5%;
+      button {
+        align-items: center;
+        width: 150px;
+        height: 50px;
+        padding: 0;
+        font-size: 1.5rem;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.322);
+        background-color: #b9ccda;
+        color: #ffffff;
+        &:hover {
+          background-color: #575c6f;
+          border: none;
+        }
+      }
+    }
+  }
+}
+.miningContainer {
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  border: 3px solid #b9ccda;
+  border-radius: 35px;
+  background: #395293d9;
+  position: fixed;
+  z-index: 10;
+  background-image: url("../../../public/imgs/miningBackground.png");
+  background-size: cover;
+  background-position: center;
+  .miningTitle h2 {
+    color: #ffffff;
+    font-size: 2.5rem;
+  }
+  .miningTitle p {
+    text-align: end;
+    font-size: 1.5rem;
+    color: #b9ccda;
+    padding-right: 8%;
+  }
+  .imagesContainer {
+    margin-left: 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100px 100px 100px;
+    gap: 50px;
+    grid-template-areas:
+      "img1 img2 img3"
+      "img4 .    img5"
+      "img6 img7 img8";
+    .image {
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      @for $i from 1 through 8 {
+        &:nth-child(#{$i}) {
+          grid-area: img#{$i};
+        }
+      }
+      &:nth-child(4) {
+        grid-area: img4;
+        justify-self: end;
+        align-self: center;
+        margin-right: -64px;
+      }
+      &:nth-child(5) {
+        grid-area: img5;
+        justify-self: start;
+        align-self: center;
+        margin-left: -64px;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.8s ease;
+        &:hover {
+          content: url("../../../public/imgs/miningHover.png");
+          transform: scale(1.8);
+        }
+      }
+      .countdown {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        color: #ffffffbb;
+        text-shadow: 0 0 5px black;
+        visibility: visible;
+      }
+    }
+  }
+  .miningBtnContainer {
+    margin-top: 8%;
+    margin-bottom: 3%;
+  }
+}
+
+// 子選單 等待battle
+.goToBattlePic {
+  position: absolute;
+  z-index: 3;
+  top: 65px;
+  left: 750px;
+  img {
+    position: relative;
+  }
+  span {
+    position: relative;
+    bottom: 15px;
+    right: 195px;
+    color: #ff0000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+// 子選單 被邀請battle
+.invitedBattleContainer {
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: auto;
+  transform: translate(-50%, -50%);
+  border: 3px solid #b9ccda;
+  border-radius: 35px;
+  background: #395293d9;
+  position: fixed;
+  z-index: 10;
+  h2 {
+    color: #ffffff;
+    font-size: 2.5rem;
+  }
+  p {
+    color: #ffffff;
+    font-size: 2.5rem;
+    padding: 3% 0px;
+    letter-spacing: 0.5px;
+  }
+  .BatteBtnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    margin-bottom: 5%;
+    color: #b9ccda;
+    .accept {
+      background-color: #39936fd9;
+    }
+    .cancel {
+      background-color: #933939d9;
+    }
+  }
+}
+
+// 打地鼠
+.WhackAMoleContainer {
+  p {
+    text-align: start;
+    font-size: 2.5rem;
+    color: #5d98b1;
+    margin-left: 10%;
+  }
+  .groundContainer {
+    margin: 80px 10%;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 80px;
+    column-gap: 50px;
+    justify-content: center;
+    align-items: center;
+    .ground {
+      width: 130px;
+      height: 35px;
+      border: 5px solid #b9ccda;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: flex-end;
+      cursor: pointer;
+    }
+  }
+  button {
+    margin-bottom: 5%;
+  }
+}

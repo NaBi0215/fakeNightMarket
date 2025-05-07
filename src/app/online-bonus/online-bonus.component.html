@@ -1,0 +1,53 @@
+<div
+  class="onlineBonusContainer"
+  (mouseenter)="changeImg(true)"
+  (mouseleave)="changeImg(false)"
+  (click)="showOnlineBonusModal()"
+>
+  <div class="clockPic">
+    <img [src]="currentImg" alt="online bonus" />
+  </div>
+</div>
+
+<!-- 在線獎勵彈窗 -->
+<div class="overlay" *ngIf="this.isOnlineBonus === true" (click)="closeModal()">
+  <div class="OnlineBonusModalContainer" (click)="$event.stopPropagation()">
+    <span class="closeX" (click)="closeModal()">&times;</span>
+    <h2>在線獎勵</h2>
+    <div class="OnlineBonusModalContent">
+      <div class="min">
+        <h4>在線5分鐘</h4>
+        <div class="bonusContent">
+          <p>獎勵:</p>
+          <img src="imgs/OnlineBonusImg.png" alt="" />
+          <img src="imgs/OnlineBonusImg.png" alt="" />
+        </div>
+      </div>
+      <div class="min">
+        <h4>在線10分鐘</h4>
+        <div class="bonusContent">
+          <p>獎勵:</p>
+          <img src="imgs/OnlineBonusImg.png" alt="" />
+          <img src="imgs/OnlineBonusImg.png" alt="" />
+        </div>
+      </div>
+      <div class="min">
+        <h4>在線30分鐘</h4>
+        <div class="bonusContent">
+          <p>獎勵:</p>
+          <img src="imgs/OnlineBonusImg.png" alt="" />
+          <img src="imgs/OnlineBonusImg.png" alt="" />
+        </div>
+      </div>
+      <div class="min">
+        <h4>在線60分鐘</h4>
+        <div class="bonusContent">
+          <p>獎勵:</p>
+          <img src="imgs/OnlineBonusImg.png" alt="" />
+          <img src="imgs/OnlineBonusImg.png" alt="" />
+        </div>
+      </div>
+    </div>
+    <button class="btn secondary" (click)="confirmGet()">領取</button>
+  </div>
+</div>

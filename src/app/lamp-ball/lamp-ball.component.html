@@ -1,0 +1,69 @@
+<div class="lampContainer">
+  <div *ngFor="let lamp of lampList; let i = index" class="lampWrapper">
+    <div
+      class="lamp"
+      [class.completed]="lamp.status === '1'"
+      [class.large]="isLargeCircle(i)"
+      [attr.data-id]="i"
+      (click)="onLampClick(i)"
+    ></div>
+    <!-- 顯示大圓圈下方的圖片 -->
+    <img
+      *ngIf="isLargeCircle(i)"
+      class="todayGift"
+      [src]="getGiftImg(i)"
+      (mouseover)="showTooltip(i)"
+      (mouseleave)="hideTooltip()"
+      (click)="onGiftClick(i)"
+      alt="Gift Icon"
+    />
+    <div class="tooltip" *ngIf="tooltipIndex === i">
+      左側集滿{{ getTooltipTxt(i) }}盞 <br />
+      即刻領取
+    </div>
+  </div>
+  <div class="lampTipContainer" *ngIf="hasToken">
+    <img src="imgs/tip.png" alt="alert icon" />
+    <p>消費10鑽可補一盞燈</p>
+  </div>
+</div>
+
+<!-- 確認花費鑽石補燈 -->
+<div
+  class="overlay"
+  *ngIf="authService.isModalVisible['isCostConfirm']"
+  (click)="authService.closeModal('isCostConfirm')"
+>
+  <div class="confirmContainer" (click)="$event.stopPropagation()">
+    <span class="closeX" (click)="authService.closeModal('isCostConfirm')"
+      >&times;</span
+    >
+    <h2>提示</h2>
+    <p>確認花費10鑽進行補燈一日</p>
+    <button class="btn primary" (click)="fetchCompleteLamp()">確認</button>
+  </div>
+</div>
+
+<!-- 禮物顯示彈窗 -->
+<div
+  class="overlay"
+  *ngIf="authService.isModalVisible['isGiftConfirm']"
+  (click)="authService.closeModal('isGiftConfirm')"
+>
+  <div class="confirmContainer" (click)="$event.stopPropagation()">
+    <span class="closeX" (click)="authService.closeModal('isGiftConfirm')"
+      >&times;</span
+    >
+    <h2>提示</h2>
+    <h5>{{ returnGiftList.itemId }}</h5>
+    <h5>{{ returnGiftList.itemName }}</h5>
+    <h5>{{ returnGiftList.className }}</h5>
+    <h5>{{ returnGiftList.amount }}</h5>
+    <button
+      class="btn primary"
+      (click)="authService.closeModal('isGiftConfirm')"
+    >
+      確認
+    </button>
+  </div>
+</div>

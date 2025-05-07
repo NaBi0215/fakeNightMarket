@@ -1,0 +1,256 @@
+<app-header></app-header>
+<app-lamp-ball></app-lamp-ball>
+<app-marquee></app-marquee>
+<app-nav-bar [logoUrl]="logoUrl"></app-nav-bar>
+
+<div class="titleContainer">
+  <div class="rectanglePic">
+    <img src="imgs/rectangle97.png" alt="" />
+  </div>
+  <h2>會員資料</h2>
+</div>
+<div class="personalContainer">
+  <div class="personal">
+    <div class="personalPicContainer">
+      <div class="personalPic" [class.has_img]="hasImg">
+        <img
+          [src]="personalImgUrl"
+          alt="profile picture"
+          (click)="personalPicClick()"
+        />
+        <input
+          type="file"
+          accept="image/*"
+          #fileInput
+          (change)="onFileSelected($event)"
+          style="display: none"
+        />
+      </div>
+      <div class="personalPicTxt">
+        <p>稱號:</p>
+        <div class="titleCharmPic">
+          <img src="imgs/titleCharm.png" alt="" />
+        </div>
+        <button>更換</button>
+      </div>
+    </div>
+    <div class="personalTxt">
+      <div class="name">
+        <h3>暱稱:</h3>
+        <input type="text" [(ngModel)]="nickname" />
+      </div>
+      <div class="gender">
+        <h3>性別:</h3>
+        <div class="genderClass">
+          <input type="radio" [(ngModel)]="gender" id="female" value="female" />
+          <label for="female" class="genderOption">女</label>
+          <span>/</span>
+          <input type="radio" [(ngModel)]="gender" id="male" value="male" />
+          <label for="male" class="genderOption">男</label>
+        </div>
+      </div>
+      <div class="birthday">
+        <h3>出生年月日:</h3>
+        <input type="date" [(ngModel)]="birthday" />
+      </div>
+      <div class="level">
+        <h3>等級:</h3>
+        <p>{{ level }}</p>
+      </div>
+      <div class="exp">
+        <h3>經驗值:</h3>
+        <div class="expBar"></div>
+        <p>{{ exp }}%</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="personalInfoWrap">
+    <div class="personalInfo">
+      <div class="personalInfoTitle">
+        <div class="rectanglePic">
+          <img src="imgs/rectangle97.png" alt="" />
+        </div>
+        <h2>會員資料</h2>
+      </div>
+      <div class="validInfo">
+        <nav>
+          <ul class="flexList">
+            <li class="password">
+              <div class="passwordPic">
+                <img src="imgs/password.png" alt="" />
+              </div>
+              <div class="flexItem">
+                <h3>密碼:</h3>
+                <p>****************</p>
+                <div class="revisePic">
+                  <img
+                    src="imgs/revise.png"
+                    alt="revise"
+                    (click)="authService.showModal('isPasswordRevise')"
+                  />
+                </div>
+              </div>
+            </li>
+            <li class="mail">
+              <div class="flexItem">
+                <h3>電話:</h3>
+                <p>{{ phoneNumber }}</p>
+                <div class="validPic">
+                  <div class="revisePic">
+                    <img
+                      src="imgs/revise.png"
+                      alt="revise"
+                      (click)="authService.showModal('isPhoneRevise')"
+                    />
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="valid">
+              <div class="flexItem">
+                <h3>認證狀態:</h3>
+                <p class="greenHighLight">已成功認證</p>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="recommendCode">
+      <h3>❅ 推薦碼 :</h3>
+      <div class="codeContainer">
+        <p id="recommendCode">N1234567899999999</p>
+        <img
+          (click)="copyRecommendCode()"
+          src="imgs/copy.png"
+          alt="copy icon"
+        />
+        <span class="tooltip" #tooltip>推薦碼已複製</span>
+      </div>
+      <div class="recommendPic">
+        <img src="imgs/recommendCode.png" alt="referral" />
+      </div>
+    </div>
+  </div>
+  <div class="storedBtn">
+    <button class="btn primary" (click)="saveChanges()">保存</button>
+  </div>
+</div>
+
+<!-- 修改密碼彈窗 -->
+<div class="overlay" *ngIf="authService.isModalVisible['isPasswordRevise']">
+  <div class="revisePasswordContainer" (click)="$event.stopPropagation()">
+    <span class="closeX" (click)="authService.closeModal('isPasswordRevise')"
+      >&times;</span
+    >
+    <h2>修改密碼</h2>
+    <form class="revisePasswordInfo">
+      <div class="passwordOld">
+        <label>舊密碼:</label>
+        <input
+          type="password"
+          [(ngModel)]="oldPassword"
+          name="oldPassword"
+          required
+        />
+      </div>
+      <div class="passwordNew">
+        <label>新密碼:</label>
+        <input
+          type="password"
+          [(ngModel)]="newPassword"
+          name="newPassword"
+          required
+        />
+      </div>
+      <div class="passwordNewCheck">
+        <label>密碼確認:</label>
+        <input
+          type="password"
+          [(ngModel)]="passwordCheck"
+          name="passwordCheck"
+          required
+        />
+      </div>
+
+      <div class="btnContainer_rv">
+        <div class="forgotLogout">
+          <a
+            (click)="
+              authService.showModal('isPWReset');
+              authService.closeModal('isPasswordRevise')
+            "
+            >忘記密碼</a
+          >
+        </div>
+        <button type="button" class="btn primary" (click)="revisePassword()">
+          修改密碼
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- 修改密碼彈窗 電話 -->
+<div
+  class="overlay"
+  (click)="authService.closeModal('isPhoneRevise')"
+  *ngIf="authService.isModalVisible['isPhoneRevise']"
+>
+  <div class="revisePhoneContainer" (click)="$event.stopPropagation()">
+    <span class="closeX" (click)="authService.closeModal('isPhoneRevise')"
+      >&times;</span
+    >
+    <h2>電話認證</h2>
+    <p>* 電話修改後請使用新電話重新登入</p>
+    <form class="revisePhoneInfo">
+      <div class="phone">
+        <label>電話:</label>
+        <select #rv_countryCode class="countryCode">
+          <option value="+886" selected>+886</option>
+        </select>
+        <input
+          type="tel"
+          #rv_phoneInput
+          required
+          pattern="^[0-9]{8,10}$"
+          (blur)="validatePhone(rv_phoneInput.value)"
+        />
+        <div class="capchaBtnContainer">
+          <button
+            type="button"
+            [disabled]="rv_isCountdownActive"
+            (click)="rvPhoneCheck()"
+          >
+            獲取驗證碼
+          </button>
+        </div>
+      </div>
+      <div class="captcha">
+        <label>驗證碼:</label>
+        <input
+          type="text"
+          name="phone_captcha"
+          #rv_phone_captcha
+          placeholder="請輸入簡訊驗證碼"
+          required
+        />
+        <div *ngIf="rv_isCountdownActive">
+          <span class="rv_countdown">剩餘:{{ rv_countdown }}秒</span>
+        </div>
+      </div>
+      <div class="btnContainer">
+        <button type="submit" class="btn primary" (click)="revisePhone()">
+          送出
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-egg></app-egg>
+<app-online-bonus></app-online-bonus>
+<app-purse></app-purse>
+<app-copyright></app-copyright>

@@ -1,0 +1,89 @@
+.InfoContainer {
+  position: fixed;
+  z-index: 2;
+  top: 12%;
+  right: 1%;
+  background-color: #395293d9;
+  border-radius: 8px;
+  padding: 0px 1%;
+  padding-bottom: 1%;
+  height: auto;
+  // 遊戲公告
+  .gamesInfo {
+    padding: 1%;
+    border-radius: 10px;
+    .gamesInfoTitle {
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid #d9d9d9;
+      width: 100%;
+      margin: 1% auto;
+      .gamesInfoTitlePic {
+        max-width: 100%;
+        margin-right: 5%;
+        .gamesInfoTitlePic img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+      }
+      h3 {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #d9d9d9;
+        margin: 0;
+      }
+    }
+    .carouselContent {
+      display: block;
+      margin-top: 15px;
+      max-width: 100%;
+      height: 180px;
+      img {
+        width: 100%;
+        height: auto;
+        display: inline-block;
+        cursor: pointer;
+      }
+    }
+  }
+  // 活動公告
+  // .activityInfo {
+  //   padding: 1%;
+  //   border-radius: 10px;
+  //   .activityInfoTitle {
+  //     display: flex;
+  //     align-items: center;
+  //     border-bottom: 2px solid #d9d9d9;
+  //     width: 100%;
+  //     margin: 1% auto;
+  //     .activityInfoTitlePic {
+  //       max-width: 100%;
+  //       margin-right: 5%;
+  //       .activityInfoTitlePic img {
+  //         width: 100%;
+  //         height: auto;
+  //         display: block;
+  //       }
+  //     }
+  //     h3 {
+  //       font-size: 1rem;
+  //       font-weight: bold;
+  //       color: #d9d9d9;
+  //       margin: 0;
+  //     }
+  //   }
+  //   .activityInfoContent {
+  //     display: flex;
+  //     flex-direction: column;
+  //     margin-top: 5%;
+  //     gap: 10px;
+  //     max-width: 100%;
+  //     img {
+  //       width: 100%;
+  //       height: auto;
+  //       display: inline-block;
+  //     }
+  //   }
+  // }
+}

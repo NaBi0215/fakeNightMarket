@@ -1,0 +1,54 @@
+.copyRight {
+  background-color: #2a365d;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  z-index: 1;
+  width: 100%;
+  padding-top: 1%;
+  color: #ffffff;
+  .copyRightPic {
+    max-width: 100%;
+    padding-top: 1%;
+    img {
+      width: 80%;
+      display: block;
+      height: auto;
+    }
+  }
+  .copyRightTxt {
+    margin-bottom: 1.5%;
+    h4 {
+      font-size: 1.2rem;
+      font-weight: normal;
+      margin: 0;
+      padding-top: 1%;
+    }
+    .center {
+      text-align: center;
+      padding-right: 10%;
+      cursor: pointer;
+      color: #5d98b1;
+    }
+    h3 {
+      font-size: 1.6rem;
+      text-align: center;
+      padding-right: 20%;
+      letter-spacing: 2px;
+      margin: 0;
+      margin-top: 2%;
+    }
+    ul {
+      padding-left: 0;
+      margin: 0;
+      padding-left: 20px;
+      li::marker {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  .version_f {
+    color: rgba(255, 255, 255, 0.625);
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,79 @@
+<div
+  class="luckyEggContainer"
+  (mouseenter)="changeImg(true)"
+  (mouseleave)="changeImg(false)"
+  (click)="showLuckyEggModal()"
+>
+  <div class="luckyEggPic">
+    <img [src]="currentImg" alt="online bonus" />
+  </div>
+</div>
+
+<!-- 砸金蛋彈窗 -->
+<div
+  class="overlay"
+  *ngIf="authService.isModalVisible['isluckyEgg']"
+  (click)="
+    authService.closeModal('isluckyEgg'); authService.closeModal('isEggGet')
+  "
+>
+  <div class="luckyEggModalContainer" (click)="$event.stopPropagation()">
+    <span
+      class="closeX"
+      (click)="
+        authService.closeModal('isluckyEgg'); authService.closeModal('isEggGet')
+      "
+      >&times;</span
+    >
+    <div class="titleContainer">
+      <h2>幸運金蛋</h2>
+      <div class="picContainer">
+        <img
+          src="https://multi-cdn.cg11pro.com/resource/prism/front/gameLobby/ui/market_night/eggCoupon.png"
+          alt=""
+        />
+      </div>
+    </div>
+    <div class="luckyEggModalPic">
+      <img
+        *ngIf="authService.isModalVisible['isEggReady']"
+        src="imgs/luckyEgg.png"
+        alt="lucky egg"
+      />
+      <img
+        *ngIf="authService.isModalVisible['isEggKnocked']"
+        src="imgs/luckyEggKnocked.png"
+        alt="lucky egg"
+      />
+    </div>
+    <div
+      *ngIf="authService.isModalVisible['isEggReady']"
+      class="knockBtnContainer"
+    >
+      <button class="btn primary" (click)="showConfirmUse(false)">砸1蛋</button>
+      <button class="btn primary" (click)="showConfirmUse(true)">連10砸</button>
+    </div>
+    <div *ngIf="authService.isModalVisible['isEggKnocked']">
+      <button class="btn primary" (click)="confirmGet()">領取</button>
+    </div>
+    <div
+      *ngIf="authService.isModalVisible['isEggConfirm']"
+      class="luckyEggsitemContent"
+    >
+      <h5>{{ giftList.itemId }}</h5>
+      <h5>{{ giftList.itemName }}</h5>
+      <h5>{{ giftList.className }}</h5>
+      <h5>{{ giftList.amount }}</h5>
+    </div>
+  </div>
+</div>
+
+<!-- 確認luckyEgg使用彈窗 -->
+<div class="overlay" *ngIf="isConfirmUse">
+  <div class="confirmModalContainer">
+    <span class="closeX" (click)="this.isConfirmUse = false">&times;</span>
+    <h2>提示</h2>
+    <p>是否消耗{{ eggType ? "十" : "一" }}張金蛋券？</p>
+    <button class="btn primary" (click)="confirmUse()">確認</button>
+  </div>
+</div>

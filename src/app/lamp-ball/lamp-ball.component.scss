@@ -1,0 +1,111 @@
+.lampContainer {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+  z-index: 2;
+  padding-left: 5%;
+  margin-top: 0.5%;
+  .lampWrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    &:not(:first-child):before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      display: inline-block;
+      align-self: center;
+      background-color: #dddddde5;
+    }
+    .lamp {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #ddddddbd;
+      cursor: pointer;
+      margin-right: 0;
+      &.completed {
+        pointer-events: none;
+        cursor: none;
+        background-color: #395293d9;
+        box-shadow: 0px 0px 20px 5px rgb(255, 255, 255);
+        animation: glowAnimation 1s ease-in-out forwards;
+      }
+    }
+    .large {
+      width: 30px;
+      height: 30px;
+      background-color: #dddddde5;
+      &.completed {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 20px 5px rgb(255, 255, 255);
+        animation: glowAnimation 1s ease-in-out forwards;
+      }
+    }
+    .todayGift {
+      position: absolute;
+      top: 30px;
+      left: 18px;
+      cursor: pointer;
+    }
+    .tooltip {
+      position: absolute;
+      z-index: 3;
+      top: 40px;
+      left: 130px;
+      transform: translateX(-50%);
+      background-color: rgba(58, 58, 58, 0.74);
+      color: #ffffff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+      opacity: 0.9;
+      pointer-events: none;
+      line-height: 22px;
+      letter-spacing: 0.8px;
+    }
+  }
+  .lampTipContainer {
+    position: absolute;
+    top: 30px;
+    display: flex;
+    align-items: center;
+    color: #dadbdb;
+    font-size: 12px;
+  }
+}
+
+// 確認花費鑽石補燈
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  .confirmContainer {
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    width: 750px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    border: 3px solid #b9ccda;
+    border-radius: 35px;
+    background: #395293d9;
+    position: fixed;
+    z-index: 10;
+    h2 {
+      color: #ffffff;
+      font-size: 2.5rem;
+    }
+    p {
+      color: #ffffff;
+      font-size: 2.5rem;
+      padding: 3% 0px;
+      letter-spacing: 0.5px;
+    }
+  }
+}

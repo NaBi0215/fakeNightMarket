@@ -1,0 +1,38 @@
+<div class="recordFavoriteContainer">
+  <div class="recordList">
+    <div class="favoriteListTitle">
+      <div class="favoriteListTitlePic">
+        <img src="imgs/sessionTimeout.png" alt="" />
+      </div>
+      <h3>遊戲紀錄</h3>
+    </div>
+    <!-- 撐空間而已 -->
+    <div class="activityInfoContent">
+      <img src="imgs/info.png" alt="" />
+      <img src="imgs/info.png" alt="" />
+    </div>
+  </div>
+
+  <div class="favoriteList">
+    <div class="favoriteListTitle">
+      <div class="favoriteListTitlePic">
+        <img src="imgs/loveCircledWhite.png" alt="" />
+      </div>
+      <h3>我的最愛</h3>
+    </div>
+    <div class="favoriteListTxt">
+      <div *ngFor="let game of favoriteList; let i = index" class="favoritePic">
+        <div class="favoriteWrap">
+          <!-- <img [src]="game.imgUrl" alt="Favorite Game" /> -->
+          <img [src]="game.imgUrl" alt="Favorite Game" />
+          <span
+            class="favoriteCloseX"
+            *ngIf="showRemoveButton"
+            (click)="removeFavorite(i); $event.stopPropagation()"
+            >&times;</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

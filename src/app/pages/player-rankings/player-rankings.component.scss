@@ -1,0 +1,244 @@
+:host {
+  display: block;
+  background-color: #818181;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.rankingsTitleContainer {
+  margin-left: 8%;
+  .titleContainer {
+    display: flex;
+    align-items: center;
+    h2 {
+      font-size: 2rem;
+      margin: 0;
+      padding-left: 1%;
+      color: #ffffff;
+      margin: 2% 0px;
+    }
+  }
+  .topThreeContainer {
+    // outline: 1px solid firebrick;
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+    margin-top: -6%;
+    animation: fadeInUp 1s ease forwards;
+
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(100px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .topTwo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+
+      .topTwoBody {
+        width: 108px;
+        height: 93px;
+        background-color: #395293d9;
+      }
+    }
+    .topOne {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      .crown {
+        position: absolute;
+        top: -40px;
+      }
+      .wing {
+        position: absolute;
+        top: 0px;
+        right: -30px;
+      }
+      .topOneBody {
+        width: 108px;
+        height: 160px;
+        background-color: #395293d9;
+      }
+    }
+    .topThree {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      .topThreeBody {
+        width: 108px;
+        height: 59px;
+        background-color: #395293d9;
+      }
+    }
+    .topPic {
+      width: 93px;
+      height: 93px;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 2px solid #488c95;
+      box-shadow: 4px 4px 4px 0px #443e3e40;
+      margin-bottom: 10%;
+    }
+  }
+}
+
+// 排行榜
+.rankingsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 5%;
+  position: relative;
+  .rankingsBtns {
+    margin-top: 2%;
+    margin-right: auto;
+    margin-left: 7.7%;
+    button {
+      background: none;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 40px;
+      border-radius: 16px 16px 0px 0px;
+      padding: 10px;
+      &.active {
+        background-color: #395293d9;
+        border: 2px solid #b9ccda;
+        border-bottom: none;
+        color: #ffffff;
+      }
+    }
+  }
+  .myRankingsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 220px;
+    top: -160px;
+
+    h4 {
+      color: #2a365d;
+      font-size: 1.2rem;
+      letter-spacing: 1.2px;
+    }
+    .myRankingsPicContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      .myRankingsPic {
+        width: 93px;
+        height: 93px;
+        background-color: #fff;
+        border-radius: 50%;
+        border: 2px solid #488c95;
+        box-shadow: 4px 4px 4px 0px #443e3e40;
+      }
+      .wingBlack {
+        position: absolute;
+        top: 50px;
+        right: -35px;
+      }
+    }
+    h5 {
+      background-color: #2a365d;
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 5% 8%;
+      font-size: 1rem;
+      font-weight: normal;
+      letter-spacing: 2px;
+      margin: 0px;
+      margin-top: 10%;
+    }
+    p {
+      color: #2a365d;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+  }
+  .line {
+    width: 80%;
+    height: 5px;
+    background-color: #395293d9;
+    margin: 0.5% 0px;
+    position: relative;
+    bottom: 10px;
+  }
+  .rankingsItemContainer {
+    margin: 2% 0px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    height: 550px;
+    &.fade {
+      opacity: 0;
+    }
+    .rankingsItem {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #b9ccdad9;
+      width: 1400px;
+      height: auto;
+      border-radius: 12px;
+      font-size: 1.6rem;
+      cursor: pointer;
+      .itemTitle {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 50px;
+        margin-left: 5%;
+        h3 {
+          color: #ffffff;
+          font-size: 3rem;
+          margin: 0;
+          font-weight: normal;
+        }
+        .playerPic {
+          width: 80px;
+          height: 80px;
+          background-color: #ffffff;
+          border-radius: 50%;
+          border: 2px solid #b9ccda;
+          box-shadow: 0px 0px 10px 2px #ffffff;
+          margin: 1% 0px;
+        }
+        h4 {
+          color: #395293;
+          margin: 0;
+          letter-spacing: 1px;
+        }
+      }
+      .gamePoint {
+        p {
+          color: #395293;
+          margin: 0;
+          letter-spacing: 1px;
+        }
+      }
+      .socialPic {
+        margin-right: 5%;
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+    }
+  }
+}

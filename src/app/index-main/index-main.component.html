@@ -1,0 +1,183 @@
+<!-- <app-loading [isLoading]="isLoading"></app-loading> -->
+<div *ngIf="!isLoading">
+  <!-- <app-advertise-modal
+    *ngIf="isAdvertiseModal"
+    (close)="closeModal()"
+  ></app-advertise-modal> -->
+  <app-header [logoUrl]="logoUrl"></app-header>
+  <app-lamp-ball></app-lamp-ball>
+  <app-game-info></app-game-info>
+  <div *ngIf="gameService.isGameList">
+    <app-game-list
+      [games]="favoriteList"
+      [favoriteList]="favoriteList"
+      [showRemoveButton]="false"
+      (removeFavoriteEvent)="gameService.removeFavorite($event)"
+    ></app-game-list>
+  </div>
+  <app-neon-lights></app-neon-lights>
+  <app-massange></app-massange>
+  <!-- <app-nav-bar [logoUrl]="logoUrl"></app-nav-bar> -->
+  <app-nav-bar></app-nav-bar>
+  <app-red-envelope></app-red-envelope>
+
+  <div class="mainTitle">
+    <h2>測試用</h2>
+  </div>
+
+  <div class="btnContainer">
+    <button
+      class="into"
+      *ngIf="!authService.isLoggedIn"
+      (click)="gameService.goToGames()"
+    >
+      訪客模式
+    </button>
+    <button
+      class="into"
+      *ngIf="authService.isLoggedIn"
+      (click)="gameService.goToGames()"
+    >
+      進入遊戲
+    </button>
+    <button
+      class="login"
+      *ngIf="!authService.isLoggedIn"
+      (click)="authService.showModal('isLogin')"
+    >
+      登入
+    </button>
+    <button
+      type="submit"
+      class="register"
+      *ngIf="!authService.isLoggedIn"
+      (click)="authService.showModal('isRegister')"
+    >
+      註冊
+    </button>
+  </div>
+  <app-egg></app-egg>
+  <app-online-bonus></app-online-bonus>
+  <app-purse></app-purse>
+
+  <!-- 註冊送好禮 登入後隱藏 -->
+  <div
+    class="reguisterGiftContainer"
+    [ngStyle]="{ display: isLogInHidden ? 'none' : 'block' }"
+  >
+    <div class="reguisterGiftTitle">
+      <div class="reguisterGiftPic">
+        <h2>註冊送好禮</h2>
+      </div>
+      <h3>現在新用戶註冊且認證完成就可獲得精美獎勵!!!</h3>
+    </div>
+    <div class="stepContainer">
+      <div class="stepCircleContainer">
+        <div class="stepCirclePic">
+          <img src="imgs/reguisterGift01.png" alt="reguister gift" />
+          <img src="imgs/arrow.png" alt="arrow" />
+          <img src="imgs/reguisterGift02.png" alt="reguister gift" />
+          <img src="imgs/arrow.png" alt="arrow" />
+          <img src="imgs/reguisterGift03.png" alt="reguister gift" />
+        </div>
+        <div class="stepTxtContainer">
+          <div class="stepTxt">
+            <div class="stepTxtPic">
+              <h5 class="stepNumber">1</h5>
+              <img src="imgs/step01.png" alt="1 icon" />
+            </div>
+          </div>
+          <div class="stepTxt">
+            <div class="stepTxtPic">
+              <h5 class="stepNumber">2</h5>
+              <img src="imgs/step02.png" alt="2 icon" />
+            </div>
+          </div>
+          <div class="stepTxt">
+            <div class="stepTxtPic">
+              <h5 class="stepNumber">3</h5>
+              <img src="imgs/step03.png" alt="3 icon" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 活動資訊 登入後隱藏 -->
+  <div
+    class="activityInfoContainer"
+    [ngStyle]="{
+      'background-color': isLogInHidden ? '#B9CCDA' : 'transparent'
+    }"
+  >
+    <div
+      class="activityTitleContainer"
+      [ngStyle]="{ display: isLogInHidden ? 'none' : 'block' }"
+    >
+      <div class="activityMainTitlePic">
+        <img src="imgs/activity.png" alt="activity info" />
+      </div>
+      <div class="activitySubTitle">
+        <h3>內文</h3>
+      </div>
+    </div>
+    <div
+      class="activityInfoContextContainer"
+      [ngClass]="{ logInHidden: isLogInHidden }"
+    >
+      <div class="mainInfoContext">
+        <div class="mainInfoTitle">
+          <h3>標題</h3>
+        </div>
+      </div>
+      <div class="activityInfoContextWrap">
+        <div class="subInfoContext">
+          <div class="subInfoContextPic">
+            <img src="imgs/subtitleImg.png" alt="" />
+          </div>
+          <div class="subInfoContextTxt">
+            <h4>主標</h4>
+            <h5>副標</h5>
+          </div>
+        </div>
+        <div class="subInfoContext">
+          <div class="subInfoContextPic">
+            <img src="imgs/subtitleImg.png" alt="" />
+          </div>
+          <div class="subInfoContextTxt">
+            <h4>主標</h4>
+            <h5>副標</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carouselContainer">
+      <div class="carouselTitle">
+        <div class="TitleFontPic">
+          <h2 *ngIf="isLogInHidden">熱門遊戲</h2>
+          <img
+            *ngIf="!isLogInHidden"
+            src="imgs/popularGamesTitle.png"
+            alt="text titles"
+          />
+        </div>
+      </div>
+      <swiper-container
+        slides-per-view="5"
+        loop="true"
+        pagination="true"
+        class="carouselContent"
+      >
+        <swiper-slide><img src="imgs/imgs.png" alt="" /></swiper-slide>
+        <swiper-slide><img src="imgs/imgs.png" alt="" /></swiper-slide>
+        <swiper-slide><img src="imgs/imgs.png" alt="" /></swiper-slide>
+        <swiper-slide><img src="imgs/imgs.png" alt="" /></swiper-slide>
+        <swiper-slide><img src="imgs/imgs.png" alt="" /></swiper-slide>
+        <swiper-slide><img src="imgs/imgs.png" alt="" /></swiper-slide>
+      </swiper-container>
+    </div>
+  </div>
+
+  <app-copyright [version]="version"></app-copyright>
+</div>

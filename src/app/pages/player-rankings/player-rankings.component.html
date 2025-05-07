@@ -1,0 +1,87 @@
+<app-header></app-header>
+<app-marquee></app-marquee>
+<app-nav-bar></app-nav-bar>
+
+<!-- 名人堂 -->
+<div class="rankingsTitleContainer">
+  <div class="titleContainer">
+    <div class="rectanglePic">
+      <img src="imgs/rectangle97.png" />
+    </div>
+    <h2>名人堂</h2>
+  </div>
+  <div class="topThreeContainer">
+    <div class="topTwo">
+      <div class="topPic"></div>
+      <div class="topTwoBody"></div>
+    </div>
+    <div class="topOne">
+      <img class="crown" src="imgs/crown.png" alt="crown icon" />
+      <img class="wing" src="imgs/wing.png" alt="wing icon" />
+      <div class="topPic"></div>
+      <div class="topOneBody"></div>
+    </div>
+    <div class="topThree">
+      <div class="topPic"></div>
+      <div class="topThreeBody"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 排行榜 -->
+<div class="rankingsContainer">
+  <div class="rankingsBtns">
+    <button
+      *ngFor="let btn of btns"
+      (click)="onSelectBtn(btn)"
+      [ngClass]="{ active: selectedBtn === btn }"
+    >
+      {{ btn }}
+    </button>
+  </div>
+  <div class="myRankingsContainer">
+    <h4>我的排名</h4>
+    <div class="myRankingsPicContainer">
+      <div class="myRankingsPic"></div>
+      <img class="wingBlack" src="imgs/wingBlack.png" alt="wing icon" />
+    </div>
+    <h5>023名</h5>
+    <p>$444</p>
+  </div>
+  <div class="line"></div>
+  <!-- 排行榜item -->
+  <swiper-container
+    slides-per-view="5"
+    direction="vertical"
+    class="rankingsItemContainer"
+    [class.fade]="isFading"
+  >
+    <!-- row1 -->
+    <swiper-slide *ngFor="let item of rankings">
+      <div
+        class="rankingsItem"
+        [ngStyle]="{
+          backgroundColor: item.rank <= 3 ? '#FED260D9' : '#b9ccdad9'
+        }"
+      >
+        <div class="itemTitle">
+          <h3>{{ item.rank }}</h3>
+          <div class="playerPic"></div>
+          <h4>{{ item.playerName }}</h4>
+        </div>
+        <div class="gamePoint">
+          <p>{{ item.points }}</p>
+        </div>
+        <div class="socialPic">
+          <img src="imgs/social.png" alt="social icon" />
+          <img src="imgs/like.png" alt="like icon" />
+        </div>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</div>
+
+<app-egg></app-egg>
+<app-online-bonus></app-online-bonus>
+<app-purse></app-purse>
+<app-copyright></app-copyright>
